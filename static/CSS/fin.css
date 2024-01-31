@@ -4,7 +4,7 @@
     padding: 0;
     font-family: 'Poppins', sans-serif;
 }
-
+@media (min-width:10px) and (max-width:700px) {
 body {
     background-color: white;
     width: 100%;
@@ -68,4 +68,6 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
 }
