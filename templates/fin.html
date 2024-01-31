@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/static/CSS/fin.css">
+</head>
+<body>
+    <!-- {% if gang %}
+    <p>{{gang}}</p>
+    {% endif %}
+    <a href="/">acceuil</a> -->
+
+    {% if gang>=moi %}
+    <div class="ec">
+        <h1 id="a">FELICITATIONS !!!</h1>
+    </div>
+    <div class="loj">
+        <img src="/static/IMAGE/chek.png" alt="">
+    </div>
+    <div class="note">
+        <h1 id="an">{{gang}}/{{pet}}</h1>
+    </div>
+    {% endif %}
+    {% if gang<moi %}
+    <div class="ec1">
+        <h1 id="a1">ECHEC !!!</h1>
+    </div>
+    <div class="loj1">
+        <img src="/static/IMAGE/coix.png" width="300px" alt="">
+    </div>
+    <div class="note1">
+        <h1 id="an1">{{gang}}/{{pet}}</h1>
+    </div>
+    {% endif %}
+</body>
+</html>

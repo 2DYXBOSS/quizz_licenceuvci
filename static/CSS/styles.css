@@ -24,7 +24,15 @@ header {
     
     
 }
+#lo {
+    animation: image 2s infinite;
+}
 
+@keyframes image {
+    0%{
+        transform: rotateY(360deg) ;
+    }
+}
 .qui {
     width: 100%;
    
@@ -35,6 +43,7 @@ header {
     justify-content: center;
     flex-wrap: wrap;
     gap: 10px;
+    padding-bottom: 50px;
 }
 .qui1 {
     width: 170px;

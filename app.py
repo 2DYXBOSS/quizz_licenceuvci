@@ -41,6 +41,27 @@ db = SQLAlchemy(app)
 
 debug = True
 
+class compte(db.Model):
+
+    id = db.Column(db.Integer, primary_key = True)
+    comp = db.Column(db.Integer)
+    
+    def __init__(self,comp):
+        self.comp = comp
+    
+    def __repr__(self):
+        
+        return {
+            "comp": self.comp,
+            
+        }
+    
+
+with app.app_context() :
+    try :
+        db.create_all()
+    except Exception as e:
+        print("error de creation de la table")
 class Maboutik(db.Model):
 
     id = db.Column(db.Integer, primary_key = True)
@@ -87,20 +108,7 @@ with app.app_context() :
 # user = Maboutik.query.filter_by(id=id).first()
 # eude = Maboutik.query.all()
 
-@app.route('/index')
-def index():
-    eude = Maboutik.query.all()
-    user = Maboutik.query.filter_by(id=1).first()
-    
-    question = user.question
-    deux= user.deux
-    premier= user.premier
-    trois = user.trois
-    quatre =user.quatre
-    reponse= user.reponse
 
-    gang = [question,[premier,deux,trois,quatre]]
-    return render_template("index.html",gang=gang)
 
 
 
@@ -119,7 +127,13 @@ def bien():
 
 @app.route('/')
 def acceuil():
-    
+    user = compte.query.get(1)
+    user.comp = 1
+    db.session.commit()
+
+    user = compte.query.get(2)
+    user.comp = 0
+    db.session.commit()
     return render_template("acceuil.html")
 
 
@@ -128,19 +142,66 @@ def add():
     
     return render_template("quizz.html")
 
+@app.route('/index')
+def index():
+    eude = Maboutik.query.all()
+    i = compte.query.filter_by(id=1).first()
+    az = i.comp
+    if az <= len(eude) :
+        print(az)
+        
+        user = Maboutik.query.filter_by(id=az).first()
+        
+        question = user.question
+        deux= user.deux
+        premier= user.premier
+        trois = user.trois
+        quatre =user.quatre
+        reponse= user.reponse
+
+        gang = [question,[premier,deux,trois,quatre]]
+        return render_template("index.html",gang=gang)
+    return redirect("/fin")
 
 @app.route('/pons',methods=["POST"])
 def pons():
     eude = Maboutik.query.all()
-    user = Maboutik.query.filter_by(id=1).first()
+    i = compte.query.filter_by(id=1).first()
+    az = i.comp
+    
+   
+    user = Maboutik.query.filter_by(id=az).first()
     
     
     reponse= user.reponse
     question = request.form["qui"]
-    
+    if question :
+        eudpe = compte.query.all()
+        user = compte.query.get(1)
+        if user.comp <= len(eude) :
+            user.comp = user.comp + 1
+            print(user.comp)
+        
+            db.session.commit()
+        else : 
+            return redirect("/")
+
     if question == reponse:
+        user = compte.query.get(2)
+        
+        user.comp = user.comp + 1
+        db.session.commit()
         return redirect("/bien")
     return redirect("/mention")
+
+@app.route('/fin')
+def fin():
+    usz = compte.query.get(1)
+    moi = usz.comp//2
+    pet = usz.comp-1
+    user = compte.query.get(2)
+    gang = user.comp
+    return render_template("fin.html",gang=gang,pet=pet,moi=moi)
 
 @app.route('/add',methods=["POST"])
 def quizz():
