@@ -11,12 +11,12 @@ h1,h2 {
 .fixe p {
     text-shadow: -1px 1px 1px  rgba(153, 150, 150, 0.507);
 }
-body {
-    width: 100%;
-    overflow: hidden;
-    background-color: #5a07a3;
-}
-@media (min-width:700px) and (max-width:3000px){
+  body {
+      width: 100%;
+      overflow: hidden;
+      background-color: #5a07a3;
+  }
+  @media (min-width:700px) and (max-width:3000px){
     body {
         width: 100%;
         overflow: hidden;
@@ -87,7 +87,7 @@ body {
         align-items: center;
         justify-content: end;
         flex-direction: column;
-        
+       
     }
     .formulaire {
         height: 73%;
@@ -103,7 +103,7 @@ body {
         font-weight: bolder;
         margin-top: 10px;
         margin-bottom: 5px;
-        
+       
         color: rgb(5, 5, 78);
 
     }
@@ -178,7 +178,7 @@ body {
     .mp {
         /* height: 480px; */
         width: 340px;
-        height: 550px;
+        height: 500px;
         background-color: white;
         /* border-top-left-radius: 10px;
         border-bottom-left-radius: 10px;

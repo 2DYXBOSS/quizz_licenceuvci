@@ -41,6 +41,38 @@ db = SQLAlchemy(app)
 
 debug = True
 
+
+
+class Connecter(db.Model):
+    
+    id = db.Column(db.Integer, primary_key = True)
+    nom = db.Column(db.String(20), unique = False , nullable = False)
+    password = db.Column(db.String(8),nullable = False)
+
+    # achat = db.relationship('Panier',back_populates='prendre')
+    def __init__(self,nom,password):
+        self.nom = nom
+        
+        self.password = password
+
+    # db.init_app(app)
+    # with app.app_context() :
+    #     db.create_all()
+    # def __str__(self):
+    #     # Renvoie une chaîne de caractères représentant l'objet
+    #     return f"Person(nom: {self.nom}, email: {self.email}, password: {self.password})"
+    def __repr__(self):
+        
+        return {
+            "nom": self.nom,
+            "password": self.password
+        }
+    
+with app.app_context() :
+    try :
+        db.create_all()
+    except Exception as e:
+        print("error de creation de la table")
 class compte(db.Model):
 
     id = db.Column(db.Integer, primary_key = True)
@@ -56,6 +88,38 @@ class compte(db.Model):
             
         }
     
+
+with app.app_context() :
+    try :
+        db.create_all()
+    except Exception as e:
+        print("error de creation de la table")
+class Profiles(db.Model):
+    
+    id = db.Column(db.Integer, primary_key = True)
+    nom = db.Column(db.String(20), unique = False , nullable = False)
+  
+    password = db.Column(db.String(8),nullable = False)
+
+    # achat = db.relationship('Panier',back_populates='prendre')
+    def __init__(self,nom,password):
+        self.nom = nom
+    
+        self.password = password
+
+    # db.init_app(app)
+    # with app.app_context() :
+    #     db.create_all()
+    # def __str__(self):
+    #     # Renvoie une chaîne de caractères représentant l'objet
+    #     return f"Person(nom: {self.nom}, email: {self.email}, password: {self.password})"
+    def __repr__(self):
+        
+        return {
+            "nom": self.nom,
+            "password": self.password
+        }
+
 
 with app.app_context() :
     try :
@@ -114,19 +178,29 @@ with app.app_context() :
 
 @app.route('/mention')
 def mention():
-    
+    if 'utilisateur_id' in session:
+        useru = Profiles.query.get(session['utilisateur_id'])
+    else:
+        return redirect('/pre')
     return render_template("mention.html")
 
 
 
 @app.route('/bien')
 def bien():
-    
+    if 'utilisateur_id' in session:
+        useru = Profiles.query.get(session['utilisateur_id'])
+    else:
+        return redirect('/pre')
     return render_template("bien.html")
 
 
 @app.route('/')
 def acceuil():
+    if 'utilisateur_id' in session:
+        useru = Profiles.query.get(session['utilisateur_id'])
+    else:
+        return redirect('/pre')
     user = compte.query.get(1)
     user.comp = 1
     db.session.commit()
@@ -144,6 +218,10 @@ def add():
 
 @app.route('/index')
 def index():
+    if 'utilisateur_id' in session:
+        useru = Profiles.query.get(session['utilisateur_id'])
+    else:
+        return redirect('/pre')
     eude = Maboutik.query.all()
     i = compte.query.filter_by(id=1).first()
     az = i.comp
@@ -196,6 +274,10 @@ def pons():
 
 @app.route('/fin')
 def fin():
+    if 'utilisateur_id' in session:
+        useru = Profiles.query.get(session['utilisateur_id'])
+    else:
+        return redirect('/pre')
     usz = compte.query.get(1)
     moi = usz.comp//2
     pet = usz.comp-1
@@ -203,7 +285,7 @@ def fin():
     gang = user.comp
     return render_template("fin.html",gang=gang,pet=pet,moi=moi)
 
-@app.route('/add',methods=["POST"])
+@app.route('/adde',methods=["POST"])
 def quizz():
     question = request.form["question"]
     premier = request.form["premier"]
@@ -216,6 +298,88 @@ def quizz():
     db.session.add(ajout)
     db.session.commit()
     return render_template("acceuil.html")
+
+
+
+
+
+
+
+
+
+
+@app.route('/add_data')
+def add_data():
+    
+    return render_template("insc.html")
+
+@app.route('/insc',methods = ["POST"])
+def insc() :
+    
+    
+    nom = request.form.get("nom")
+    
+    pseudo = request.form.get("pseudo")
+    password = request.form.get("password")
+    conpassword = request.form.get("conpassword")
+    if conpassword != password :
+        flash("Entrez le meme mot de passe")
+        return redirect("/add_data")
+    p = Profiles(nom = nom, password = password)
+
+    db.session.add(p)
+    db.session.commit()
+    return redirect("/pre")
+
+    
+
+
+
+
+
+
+
+
+
+@app.route('/pre')
+def pree():
+    return render_template('conn.html')
+@app.route('/sprome',methods = ["GET","POST"])
+def sprome() :
+    compte = 0
+    eudeu = Profiles.query.all()
+    Profilesp = Maboutik.query.all()
+    eude = [eudeu,Profilesp]
+    user = Profiles.query.filter_by(nom = request.form.get("nom") , password = request.form.get("password")).first()
+    userr = Connecter.query.filter_by(nom = request.form.get("nom") ,password = request.form.get("password")).first()
+
+    if user :
+        
+        datae = Profiles.query.get(user.id)
+        
+        print(f"vous etes connecter{user.nom}{user.id}")
+        
+
+        session['utilisateur_id'] = user.id
+        return redirect('/')
+
+    # elif userr :
+    #     session['admining_id'] = userr.id
+    #     return redirect('/admining')
+    else :
+
+        flash("Email ou Mot de passe invalide")
+        return redirect("/pre")
+    
+
+
+@app.route('/p')
+def p():
+    return render_template('p.html')
+    
+
+
+
 
 
 
