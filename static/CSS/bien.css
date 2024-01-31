@@ -1,0 +1,161 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+}
+body {
+    width: 100%;
+    background-color: rgb(9, 255, 0);
+}
+#logo {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 2rem;
+    color: white;
+    text-align: center;
+    padding-top: 50px;
+    text-shadow: 2px 2px 5px rgb(165, 170, 169);
+}
+
+.lo {
+    height: 400px;
+    
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+#butt {
+    padding: 25px 10px;
+    background-color: white;
+    text-align: center;
+    margin: 0 auto;
+    border-radius: 10px;
+    color: rgb(5, 5, 78);
+    text-decoration: none;
+    font-weight: bolder;
+    font-size: 1.2rem;
+    margin-top: 20px;
+}
+
+.bu {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.etoile1 {
+    
+    height: 35px;
+    width: 45px;
+    animation: etoile1 2s infinite;
+    position: fixed;
+    top: 50px;
+    right: 50px;
+    
+}
+
+@keyframes etoile1 {
+    10% {
+        opacity: 100%;
+    }
+    100%{
+        opacity: 0;
+    }
+}
+
+.etoile2 {
+    
+    height: 35px;
+    width: 45px;
+    animation: etoile2 2s infinite;
+    position: fixed;
+    bottom: 300px;
+    right: 50px;
+    
+}
+
+@keyframes etoile2 {
+    10% {
+        opacity: 100%;
+    }
+    100%{
+        opacity: 0;
+    }
+}
+.etoile3 {
+    
+    height: 35px;
+    width: 45px;
+    animation: etoile3 2s infinite;
+    position: fixed;
+    top: 100px;
+    right: 150px;
+    
+}
+
+@keyframes etoile3 {
+    10% {
+        opacity: 100%;
+    }
+    100%{
+        opacity: 0;
+    }
+}
+.etoile6 {
+    
+    height: 35px;
+    width: 45px;
+    animation: etoile6 2s infinite;
+    position: fixed;
+    top: 50px;
+    left: 50px;
+    
+}
+
+@keyframes etoile6 {
+    10% {
+        opacity: 100%;
+    }
+    100%{
+        opacity: 0;
+    }
+}
+.etoile5 {
+    
+    height: 35px;
+    width: 45px;
+    animation: etoile5 2s infinite;
+    position: fixed;
+    top: 350px;
+    left: 50px;
+    
+}
+
+@keyframes etoile5 {
+    10% {
+        opacity: 100%;
+    }
+    100%{
+        opacity: 0;
+    }
+}
+.etoile4 {
+    
+    height: 35px;
+    width: 45px;
+    animation: etoile4 2s infinite;
+    position: fixed;
+    top: 150px;
+    left: 50px;
+    
+}
+
+@keyframes etoile4 {
+    10% {
+        opacity: 100%;
+    }
+    100%{
+        opacity: 0;
+    }
+}

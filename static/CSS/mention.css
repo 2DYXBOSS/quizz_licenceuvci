@@ -1,0 +1,54 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+}
+body {
+    width: 100%;
+    background-color: rgb(255, 0, 0);
+}
+#logo {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 2rem;
+    color: white;
+    text-align: center;
+    padding-top: 50px;
+    text-shadow: 2px 2px 5px rgb(165, 170, 169);
+}
+
+.lo {
+    height: 400px;
+    
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: image 2s infinite;
+}
+
+
+@keyframes image {
+    0%{
+        transform: rotateX(60deg) ;
+    }
+}
+#butt {
+    padding: 25px 10px;
+    background-color: white;
+    text-align: center;
+    margin: 0 auto;
+    border-radius: 10px;
+    color: rgb(5, 5, 78);
+    text-decoration: none;
+    font-weight: bolder;
+    font-size: 1.2rem;
+}
+
+.bu {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+

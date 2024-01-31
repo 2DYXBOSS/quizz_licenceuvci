@@ -1,0 +1,17 @@
+blinker
+click
+colorama
+Flask
+Flask-Login
+Flask-Mail
+Flask-SQLAlchemy
+greenlet
+gunicorn
+itsdangerous
+Jinja2
+MarkupSafe
+packaging
+pywhatkit
+SQLAlchemy
+typing_extensions
+Werkzeug
