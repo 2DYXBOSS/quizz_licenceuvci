@@ -297,7 +297,7 @@ def quizz():
     ajout = Maboutik(question=question,premier=premier,deux=deux,trois=trois,quatre=quatre,reponse=reponse)
     db.session.add(ajout)
     db.session.commit()
-    return render_template("acceuil.html")
+    return redirect("/add")
 
 
 
