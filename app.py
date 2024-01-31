@@ -308,6 +308,16 @@ def quizz():
 
 
 
+@app.route('/admin')
+def admin():
+    eudpe = Profiles.query.all()
+    tab = []
+    for i in eudpe :
+        tab.append(i.nom)
+    return render_template("admin.html",tab=tab)
+
+
+
 @app.route('/add_data')
 def add_data():
     
