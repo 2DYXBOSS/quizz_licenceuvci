@@ -400,22 +400,25 @@ def insc() :
         useru = Profiles.query.get(session['utilisateur_id'])
     else:
         return redirect('/pre')
-    nom = request.form.get("nom")
-    
-    pseudo = request.form.get("pseudo")
-    password = request.form.get("password")
-    conpassword = request.form.get("conpassword")
-    if conpassword != password :
-        flash("Entrez le meme mot de passe")
-        return redirect("/add_data")
-    p = Profiles(nom = nom, password = password)
+    if request.method == "POST" :
+        nom = request.form.get("nom")
+        print(nom)
+        pseudo = request.form.get("pseudo")
+        password = request.form.get("password")
+        print(password)
 
-    db.session.add(p)
-    db.session.commit()
+        conpassword = request.form.get("conpassword")
+        if conpassword != password :
+            flash("Entrez le meme mot de passe")
+            return redirect("/add_data")
+        p = Profiles(nom = nom, password = password)
 
-    classem = classement(comp=nom,note="premier")
-    db.session.add(classem)
-    db.session.commit()
+        db.session.add(p)
+        db.session.commit()
+    if request.method == "POST" :
+        classem = classement(comp=nom,note="premier")
+        db.session.add(classem)
+        db.session.commit()
 
     return redirect("/pre")
 
