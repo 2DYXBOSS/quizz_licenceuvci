@@ -396,10 +396,7 @@ def add_data():
 @app.route('/insc',methods = ["POST"])
 def insc() :
     
-    if 'utilisateur_id' in session:
-        useru = Profiles.query.get(session['utilisateur_id'])
-    else:
-        return redirect('/pre')
+    
     if request.method == "POST" :
         nom = request.form.get("nom")
         print(nom)
