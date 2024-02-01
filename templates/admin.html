@@ -1,13 +1,88 @@
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="/static/CSS/admin.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap" rel="stylesheet">
 </head>
 <body>
-    {% for i in tab %}
-    <p>{{i}}</p>
+    <div class="clase" style="color: white;">
+        <a href="/fin" style="text-decoration: none;color: white;"><h1 id="class">Félicitations à vous <span style="text-transform: uppercase;font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">{{maxe[1]}}</span> </h1></a>
+    </div>
+    
+    {% if maxe %}
+    <div class="lopm">
+        <div class="lo1">
+            <div class="lo105">
+                <h1 id="lo11">1 er</h1>
+            </div>
+            <div class="lo12">
+                <h2 style="text-transform: uppercase;">{{maxe[1]}}</h2>
+            </div>
+            <div class="lo10">
+                <h1 id="lo11">{{maxe[0]}}/10</h1>
+            </div>
+            <!-- <div class="lo100">
+                <h1 id="lo11">8/10</h1>
+            </div> -->
+        </div>
+       
+    </div>
+    {% endif %}
+    <!-- {% for i in tab %}
+   
+    <div class="lo">
+        <div class="lo1">
+            <div class="lo14">
+                <h1 id="1">{{tab.index(i)}}</h1>
+            </div>
+            
+            <div class="lo12">
+                <p>{{i[1]}}</p>
+            </div>
+            {% if i[0]>=10 %}
+            <div class="lo10">
+                <h1 id="lo11">{{i[0]}}/20</h1>
+            </div>
+            {% endif %}
+            {% if i[0]<10 %}
+            <div class="lo100">
+                <h1 id="lo11">{{i[0]}}/20</h1>
+            </div>
+            {% endif %}
+        </div>
+       
+    </div>
+    {% endfor %} -->
+    {% for i in tab[lenm::-1] %}
+    <div class="lo">
+        <div class="lo1">
+            <div class="lo14">
+                <h1 id="1">{{ loop.index+1 }}</h1>
+            </div>
+            
+            <div class="lo12">
+                <p style="text-transform: uppercase;font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">{{ i[1] }}</p>
+            </div>
+            
+            {% if i[0] >= 10 %}
+                <div class="lo10">
+                    <h1 id="lo11">{{ i[0] }}/20</h1>
+                </div>
+            {% else %}
+                <div class="lo100">
+                    <h1 id="lo11">{{ i[0] }}/20</h1>
+                </div>
+            {% endif %}
+        </div>
+    </div>
     {% endfor %}
+
 </body>
 </html>

@@ -12,7 +12,8 @@
     {% endif %}
     <a href="/">acceuil</a> -->
 
-    {% if gang>=moi %}
+    <a href="/admin" style="text-decoration: none;">
+        {% if gang>=moi %}
     <div class="ec">
         <h1 id="a">FELICITATIONS !!!</h1>
     </div>
@@ -35,5 +36,6 @@
         <h1 id="an1">{{gang}}/{{pet}}</h1>
     </div>
     {% endif %}
+    </a>
 </body>
 </html>

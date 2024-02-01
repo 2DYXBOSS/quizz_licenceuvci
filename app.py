@@ -4,15 +4,15 @@ from flask import render_template , redirect , request,url_for,flash,Response
 from flask import render_template , redirect , request,url_for,flash,session ,Response
 
 
-# import datetime
+import datetime
 
-# data = datetime.date.today()
-# dataheure = datetime.datetime.now()
-# formatted_time = dataheure.strftime('%H')
-# formatted = dataheure.strftime('%M')
-# print(formatted_time)
-# print(formatted)
-# print(dataheure)
+data = datetime.date.today()
+dataheure = datetime.datetime.now()
+formatted_time = dataheure.strftime('%H')
+formatted = dataheure.strftime('%M')
+print(formatted_time)
+print(formatted)
+print(dataheure)
 
 
 from flask import Flask, request, render_template, redirect, url_for,send_file
@@ -66,6 +66,29 @@ class Connecter(db.Model):
         return {
             "nom": self.nom,
             "password": self.password
+        }
+    
+with app.app_context() :
+    try :
+        db.create_all()
+    except Exception as e:
+        print("error de creation de la table")
+class classement(db.Model):
+
+    id = db.Column(db.Integer, primary_key = True)
+    comp = db.Column(db.String(20), unique = False , nullable = False)
+    note = db.Column(db.Integer)
+    
+    def __init__(self,comp,note):
+        self.comp = comp
+        self.note = note
+    
+    def __repr__(self):
+        
+        return {
+            "comp": self.comp,
+            "note": self.note,
+            
         }
     
 with app.app_context() :
@@ -222,6 +245,17 @@ def index():
         useru = Profiles.query.get(session['utilisateur_id'])
     else:
         return redirect('/pre')
+    
+    data = datetime.date.today()
+    dataheure = datetime.datetime.now()
+    formatted_time = dataheure.strftime('%H')
+    formatted = dataheure.strftime('%M')
+    sec = dataheure.strftime('%S')
+    # print(formatted_time)
+    # print(formatted)
+    # print(sec)
+    # print(dataheure)
+
     eude = Maboutik.query.all()
     i = compte.query.filter_by(id=1).first()
     az = i.comp
@@ -238,11 +272,15 @@ def index():
         reponse= user.reponse
 
         gang = [question,[premier,deux,trois,quatre]]
-        return render_template("index.html",gang=gang)
+        return render_template("index.html",gang=gang,sec=sec)
     return redirect("/fin")
 
 @app.route('/pons',methods=["POST"])
 def pons():
+    if 'utilisateur_id' in session:
+        useru = Profiles.query.get(session['utilisateur_id'])
+    else:
+        return redirect('/pre')
     eude = Maboutik.query.all()
     i = compte.query.filter_by(id=1).first()
     az = i.comp
@@ -254,22 +292,34 @@ def pons():
     reponse= user.reponse
     question = request.form["qui"]
     if question :
+        # eudpe = classement.query.all()
+        # cla = classement.query.get(1)
+        taz = []
         eudpe = compte.query.all()
         user = compte.query.get(1)
         if user.comp <= len(eude) :
             user.comp = user.comp + 1
-            print(user.comp)
-        
+            # print(user.comp)
+            
             db.session.commit()
         else : 
             return redirect("/")
 
     if question == reponse:
+        ust = classement.query.get(1)
+        print(ust.id)
+        azp = ust.note+1
+        ust.note = azp
+        db.session.commit()
+
         user = compte.query.get(2)
-        
         user.comp = user.comp + 1
         db.session.commit()
         return redirect("/bien")
+    
+    ust = classement.query.get(1)
+    ust.note = 0
+    db.session.commit()
     return redirect("/mention")
 
 @app.route('/fin')
@@ -283,6 +333,10 @@ def fin():
     pet = usz.comp-1
     user = compte.query.get(2)
     gang = user.comp
+    uszt = classement.query.get(session['utilisateur_id'])
+    uszt.note = gang
+    uszt.comp = uszt.comp
+    db.session.commit()
     return render_template("fin.html",gang=gang,pet=pet,moi=moi)
 
 @app.route('/adde',methods=["POST"])
@@ -310,11 +364,27 @@ def quizz():
 
 @app.route('/admin')
 def admin():
+    classep = classement.query.all()
     eudpe = Profiles.query.all()
     tab = []
-    for i in eudpe :
-        tab.append(i.nom)
-    return render_template("admin.html",tab=tab)
+    for i in classep :
+        tab.append([i.note,i.comp ])
+    q=[]
+    tab = sorted(tab)
+    w= reversed(tab)
+    comp=[]
+    for i in tab:
+        q.append(i[0])
+
+    maxe = max(q)
+    for i in tab:
+        if maxe == i[0] :
+            txs = i
+            break
+        
+
+    lenm= len(tab)-2
+    return render_template("admin.html",tab=tab,comp=comp,maxe=txs,lenm=lenm)
 
 
 
@@ -326,7 +396,10 @@ def add_data():
 @app.route('/insc',methods = ["POST"])
 def insc() :
     
-    
+    if 'utilisateur_id' in session:
+        useru = Profiles.query.get(session['utilisateur_id'])
+    else:
+        return redirect('/pre')
     nom = request.form.get("nom")
     
     pseudo = request.form.get("pseudo")
@@ -339,6 +412,11 @@ def insc() :
 
     db.session.add(p)
     db.session.commit()
+
+    classem = classement(comp=nom,note="premier")
+    db.session.add(classem)
+    db.session.commit()
+
     return redirect("/pre")
 
     

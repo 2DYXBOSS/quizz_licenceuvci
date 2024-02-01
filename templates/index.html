@@ -15,6 +15,9 @@
         <a href="/" id="lo">
             <img src="{{ url_for('static', filename='IMAGE/ine.png')}}" width="70px" alt="">
         </a>
+        {% if sec %}
+        <p>{{sec}}</p>
+        {% endif%}
     </header>
     <div class="question">
         {% if gang[0] %}
