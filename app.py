@@ -655,7 +655,7 @@ def ans():
         nomypm=-1
         fdsg = ez[-1].vai
         inde = Maboutik.query.get(20)
-        indeet = answepm.query.get(20)
+        indeet = ez[-1]
         print("a",inde.reponse)
         # print(nomypm)
         # print(fdsg)
