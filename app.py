@@ -398,8 +398,13 @@ def quizz():
 
 @app.route('/admin')
 def admin():
+    if 'utilisateur_id' in session:
+        sessionp = Profiles.query.get(session['utilisateur_id'])
+    else:
+        return redirect('/pre')
     classep = classement.query.all()
     eudpe = Profiles.query.all()
+    datae = compte.query.get(2)
     tab = []
     for i in classep :
         tab.append([i.note,i.comp ])
@@ -413,11 +418,13 @@ def admin():
     maxe = max(q)
     for i in tab:
         if maxe == i[0] :
-            txs = i
+            aqsz = i
+            print(aqsz)
             break
-        
-    
 
+    dss = sessionp.nom
+    txs= [datae.comp,dss]
+    print(txs)
     lenm= len(tab)-2
     qcs=[]
     for a in tab[::-1]:
@@ -428,6 +435,7 @@ def admin():
     #     if o == txs :
     #         qsw = tab.index(o)
     #         break
+    
     session.pop('utilisateur_id', None)
     
     return render_template("admin.html",tab=qcs,comp=comp,maxe=txs,lenm=lenm,qsw=qsw)
