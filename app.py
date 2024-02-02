@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask ,request, abort
 from flask_sqlalchemy import SQLAlchemy
 from flask import render_template , redirect , request,url_for,flash,Response
 from flask import render_template , redirect , request,url_for,flash,session ,Response
@@ -231,6 +231,15 @@ def acceuil():
     user = compte.query.get(2)
     user.comp = 0
     db.session.commit()
+
+    user = classement.query.get(session['utilisateur_id'])
+    user.note = 0
+    db.session.commit()
+
+    
+
+
+    db.session.commit()
     return render_template("acceuil.html")
 
 
@@ -245,7 +254,10 @@ def index():
         useru = Profiles.query.get(session['utilisateur_id'])
     else:
         return redirect('/pre')
+    if is_translator_request():
+        abort(403)
     
+        
     data = datetime.date.today()
     dataheure = datetime.datetime.now()
     formatted_time = dataheure.strftime('%H')
@@ -260,7 +272,7 @@ def index():
     i = compte.query.filter_by(id=1).first()
     az = i.comp
     if az <= len(eude) :
-        print(az)
+        # print(az)
         
         user = Maboutik.query.filter_by(id=az).first()
         
@@ -270,9 +282,13 @@ def index():
         trois = user.trois
         quatre =user.quatre
         reponse= user.reponse
-
+        userup = compte.query.get(2)
+        cd = userup.comp
+        print(cd)
+        plo = compte.query.get(1)
+        plop = plo.comp
         gang = [question,[premier,deux,trois,quatre]]
-        return render_template("index.html",gang=gang,sec=sec)
+        return render_template("index.html",gang=gang,sec=sec,cd=cd,plop=plop)
     return redirect("/fin")
 
 @app.route('/pons',methods=["POST"])
@@ -281,6 +297,8 @@ def pons():
         useru = Profiles.query.get(session['utilisateur_id'])
     else:
         return redirect('/pre')
+    if is_translator_request():
+        abort(403)
     eude = Maboutik.query.all()
     i = compte.query.filter_by(id=1).first()
     az = i.comp
@@ -291,6 +309,12 @@ def pons():
     
     reponse= user.reponse
     question = request.form["qui"]
+    if question == 1 :
+        question = 2
+    elif question == 2 :
+        question = 1
+    else :
+        pass
     if question :
         # eudpe = classement.query.all()
         # cla = classement.query.get(1)
@@ -322,6 +346,14 @@ def pons():
     db.session.commit()
     return redirect("/mention")
 
+
+
+# DECONNEXION {}
+@app.route('/deconnexion')
+def deconnexion():
+    session.pop('utilisateur_id', None)
+    return redirect('/pre')
+# FIN DECONNEXION {}
 @app.route('/fin')
 def fin():
     if 'utilisateur_id' in session:
@@ -336,7 +368,9 @@ def fin():
     uszt = classement.query.get(session['utilisateur_id'])
     uszt.note = gang
     uszt.comp = uszt.comp
+
     db.session.commit()
+
     return render_template("fin.html",gang=gang,pet=pet,moi=moi)
 
 @app.route('/adde',methods=["POST"])
@@ -382,9 +416,21 @@ def admin():
             txs = i
             break
         
+    
 
     lenm= len(tab)-2
-    return render_template("admin.html",tab=tab,comp=comp,maxe=txs,lenm=lenm)
+    qcs=[]
+    for a in tab[::-1]:
+        qcs.append(a)
+
+    qsw = qcs.index(txs)+1
+    # for o in qcs :
+    #     if o == txs :
+    #         qsw = tab.index(o)
+    #         break
+    session.pop('utilisateur_id', None)
+    
+    return render_template("admin.html",tab=qcs,comp=comp,maxe=txs,lenm=lenm,qsw=qsw)
 
 
 
@@ -396,7 +442,9 @@ def add_data():
 @app.route('/insc',methods = ["POST"])
 def insc() :
     
-    
+    user = Profiles.query.filter_by(nom = request.form.get("nom")).first()
+    if user :
+        return redirect("/add_data")
     if request.method == "POST" :
         nom = request.form.get("nom")
         print(nom)
@@ -413,7 +461,7 @@ def insc() :
         db.session.add(p)
         db.session.commit()
     if request.method == "POST" :
-        classem = classement(comp=nom,note="premier")
+        classem = classement(comp=nom,note=0)
         db.session.add(classem)
         db.session.commit()
 
@@ -469,7 +517,25 @@ def p():
 
 
 
+def is_translator_request():
+    # Liste des identifiants d'agents utilisateur de traducteurs automatiques courants
+    translator_user_agents = ["GoogleTranslate", "MicrosoftTranslator", "BingPreview", "SDL Translation"]
 
+    user_agent = request.headers.get('User-Agent', '').lower()
+
+    for translator in translator_user_agents:
+        if translator.lower() in user_agent:
+            return True
+
+    return False
+
+# @app.route('/')
+# def home():
+#     if is_translator_request():
+#         abort(403)  # Interdit l'accès si une requête provient d'un traducteur automatique
+
+    # Le reste du code pour la page d'accueil
+    return "Bienvenue sur mon site !"
 
 
 if __name__ == '__main__' :

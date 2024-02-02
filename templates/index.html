@@ -12,13 +12,37 @@
 <body>
     <header>
         <!-- <h1 id="logo">X - <span id="logo1">QUIZZ</span></h1> -->
-        <a href="/" id="lo">
-            <img src="{{ url_for('static', filename='IMAGE/ine.png')}}" width="70px" alt="">
-        </a>
-        {% if sec %}
-        <p>{{sec}}</p>
-        {% endif%}
+        
+        
+        <div class="isma1">
+            <div class="ism1">
+                <p style="color: white;">{{plop}}</p>
+            </div>
+            <p  id="pnom">Questions </p>
+        </div>
+        <div class="isma">
+            <a href="/" id="lo">
+                <img src="{{ url_for('static', filename='IMAGE/ine.png')}}" width="70px" alt="">
+            </a>
+        </div>
+        <div class="isma2">
+            {% if cd>=plop/2 %}
+            <div class="ism12">
+                <p style="color: white;">{{cd}}</p>
+            </div>
+            {% endif%}
+            {% if cd<plop/2 %}
+            <div class="ism13">
+                <p style="color: white;">{{cd}}</p>
+            </div>
+            {% endif%}
+            
+            <p  id="pnom">Trouvés </p>
+        </div>
+        
+        
     </header>
+  
     <div class="question">
         {% if gang[0] %}
         <p id="quizz">{{gang[0]}}</p>
@@ -28,7 +52,7 @@
     <div class="qui">
         {% for ponse in gang[1] %}
         <form action="/pons" method="post">
-            <input type="text" value="{{ponse}}" name="qui" width="0px" style="opacity: 0;">
+            <input type="text" value="{{loop.index}}" name="qui" width="0px" style="opacity: 0;">
             <button type="submit" class="qui1">
                 <p>{{ponse}}</p>
             </button>

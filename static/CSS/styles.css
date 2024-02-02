@@ -11,7 +11,7 @@ header {
     background-color: white;
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
 }
 
 #logo {
@@ -26,8 +26,57 @@ header {
 }
 #lo {
     animation: image 2s infinite;
+    /* background-color: aqua; */
 }
-
+.isma {
+    width: 30%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.isma1 ,.isma2 {
+    width: 35%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    /* background-color: blueviolet; */
+}
+.ism1 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    width: 50px;
+    height: 50px;
+    background-color: rgb(5, 5, 78);
+    border-radius: 100%;
+    box-shadow: 2px 3px 10px 1px gray;
+}
+.ism12 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    width: 50px;
+    height: 50px;
+    background-color: rgb(81, 255, 0);
+    border-radius: 100%;
+    box-shadow: 2px 3px 10px 1px gray;
+}
+.ism13 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    width: 50px;
+    height: 50px;
+    background-color: rgb(255, 0, 0);
+    border-radius: 100%;
+    box-shadow: 2px 3px 10px 1px gray;
+}
 @keyframes image {
     0%{
         transform: rotateY(360deg) ;
@@ -46,8 +95,8 @@ header {
     padding-bottom: 50px;
 }
 .qui1 {
-    width: 170px;
-    height: 170px;
+    width: 150px;
+    height: 150px;
     background-color: rgb(5, 5, 78);
     border-radius: 10px;
     box-shadow: 2px 3px 10px 1px gray;
@@ -72,4 +121,27 @@ header {
     color: rgb(0, 0, 0);
     font-size: 1.5rem;
 }
+header p {
+    color: rgb(255, 0, 0);
+    font-weight: bolder;
+    
+    font-size: 1rem;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+#pnom {
+    color: rgb(5, 5, 78);
+    font-weight: bolder;
+    color: rgb(5, 5, 78);
+    font-size: 1rem;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    text-shadow: 2px 2px 2px gray;
+}
+#pnom2 {
+    
+    font-weight: bolder;
+    color: rgb(5, 5, 78);
+    font-size: 1.5rem;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
 }
