@@ -170,6 +170,14 @@ header p {
     
     font-size: 1rem;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    text-align: center;
+}
+p {
+    color: rgb(255, 0, 0);
+    font-weight: bolder;
+    
+    font-size: 0.5rem;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 #pnom {
     color: rgb(5, 5, 78);
