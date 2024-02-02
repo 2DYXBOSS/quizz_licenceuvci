@@ -4,7 +4,20 @@
     padding: 0;
     font-family: 'Poppins', sans-serif;
 }
-@media (min-width:10px) and (max-width:700px) {
+body {
+    
+    width: 100%;
+    
+    
+}
+.aqwxc {
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto;
+    margin-top: 50px;
+    
+}
+
 header {
     height: 100px;
     width: 100%;
@@ -144,4 +157,3 @@ header p {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-}

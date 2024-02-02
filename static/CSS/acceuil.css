@@ -4,7 +4,14 @@
     padding: 0;
     font-family: 'Poppins', sans-serif;
 }
-@media (min-width:10px) and (max-width:700px) {
+.aqwxc {
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto;
+    margin-top: 50px;
+    
+}
+
     body {
         width: 100%;
         background-color: rgb(5, 5, 78);
@@ -60,4 +67,4 @@
         align-items: center;
         justify-content: center;
     }
-}
+

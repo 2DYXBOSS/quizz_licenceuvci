@@ -284,11 +284,21 @@ def index():
         reponse= user.reponse
         userup = compte.query.get(2)
         cd = userup.comp
-        print(cd)
+        # print(cd)
         plo = compte.query.get(1)
         plop = plo.comp
         gang = [question,[premier,deux,trois,quatre]]
         return render_template("index.html",gang=gang,sec=sec,cd=cd,plop=plop)
+    # print(useru.nom)
+    plo = compte.query.get(1)
+    plop = plo.comp
+    print(useru.nom)
+    user = classement.query.filter_by(comp=useru.nom).first()
+    fds = user.id
+    print(fds)
+    userump = classement.query.get(fds)
+    userump.note = plop
+    db.session.commit()
     return redirect("/fin")
 
 @app.route('/pons',methods=["POST"])
@@ -330,20 +340,20 @@ def pons():
             return redirect("/")
 
     if question == reponse:
-        ust = classement.query.get(1)
-        print(ust.id)
-        azp = ust.note+1
-        ust.note = azp
-        db.session.commit()
+        # ust = classement.query.get(1)
+        # print(ust.id)
+        # azp = ust.note+1
+        # ust.note = azp
+        # db.session.commit()
 
         user = compte.query.get(2)
         user.comp = user.comp + 1
         db.session.commit()
         return redirect("/bien")
     
-    ust = classement.query.get(1)
-    ust.note = 0
-    db.session.commit()
+    # ust = classement.query.get(1)
+    # ust.note = 0
+    # db.session.commit()
     return redirect("/mention")
 
 
