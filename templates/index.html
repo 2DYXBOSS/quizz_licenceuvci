@@ -54,8 +54,9 @@
     </div>
     <div class="qui">
         {% for ponse in gang[1] %}
-        <form action="/pons" method="post">
-            <input type="text" value="{{loop.index}}" name="qui" width="0px" style="opacity: 0;">
+        <form action="/pons" method="post" id="aqf" >
+            <input type="text" value="{{loop.index}}" name="qui" width="0px" style="opacity: 0;visibility: hidden;">
+            <input type="text" value="{{loop.index}}" name="inde" width="0px" style="opacity: 0;visibility: hidden;">
             <button type="submit" class="qui1">
                 <p>{{ponse}}</p>
             </button>

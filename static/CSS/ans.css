@@ -12,7 +12,7 @@ body {
 }
 .aqwxc {
     width: 100%;
-    /* max-width: 600px; */
+    max-width: 400px;
     margin: 0 auto;
     margin-top: 50px;
     
@@ -98,7 +98,7 @@ header {
 .qui {
     width: 100%;
    
-    
+    background-color: white;
     padding-top: 50px;
     display: flex;
     align-items: center;
@@ -110,7 +110,7 @@ header {
 .qui1 {
     width: 150px;
     height: 150px;
-    background-color: rgb(5, 5, 78);
+    
     border-radius: 10px;
     box-shadow: 2px 3px 10px 1px gray;
     display: flex;
@@ -122,11 +122,35 @@ header {
     overflow: hidden;
     border: none;
 }
-#aqf {
-    
+.qui12 {
     width: 150px;
     height: 150px;
-    margin-bottom: 20px;
+    background-color: rgb(130, 224, 7);
+    border-radius: 10px;
+    box-shadow: 2px 3px 10px 1px gray;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: bolder;
+    padding: 10px;
+    overflow: hidden;
+    border: none;
+}
+.qui13 {
+    width: 150px;
+    height: 150px;
+    background-color: rgb(255, 0, 0);
+    border-radius: 10px;
+    box-shadow: 2px 3px 10px 1px gray;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: bolder;
+    padding: 10px;
+    overflow: hidden;
+    border: none;
 }
 .question {
     padding-left: 10px;
@@ -139,7 +163,6 @@ header {
     font-weight: bolder;
     color: rgb(0, 0, 0);
     font-size: 1.5rem;
-    
 }
 header p {
     color: rgb(255, 0, 0);
@@ -164,3 +187,11 @@ header p {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
+
+.deco {
+    display: flex;
+    align-items: end;
+    justify-content: center;
+    width: 100%;
+    height: 200px;
+}

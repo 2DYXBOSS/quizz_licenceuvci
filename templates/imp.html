@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/static/CSS/imp.css">
+</head>
+<body>
+    <div class="clase" style="color: white;">
+        <a href="#" style="text-decoration: none;color: white;"><h1 id="class" style="text-align: center;">Ma performance </h1></a>
+    </div>
+    {% for i in eude %}
+    <div class="fo">
+        <div class="ques">
+            <a href="#" style="text-decoration: none;color: rgb(5, 5, 78);"><h1 id="class" style="text-align: center;">QUESTION {{i.compt}}</h1></a>
+        </div>
+        
+        {% if i.compt != 20 %}
+        {% if i.vai == "faux" %}
+        <div class="tes">
+            <form action="/ans" method="post" >
+                <input type="text" value="{{nom}}" name="quyi" width="0px" style="opacity: 0;">
+                <input type="text" value="{{i.compt}}" name="quypmi" width="0px" style="opacity: 0;">
+
+                <button type="submit" style="text-decoration: none;color: white;border: none;" ><h1 id="class" style="text-align: center;">{{i.vai}}</h1></button>
+            </form>
+        </div>
+        {% endif %}
+        {% if i.vai == "vrai" %}
+        <div class="tes2">
+            
+
+            <form action="/ans" method="post" >
+                <input type="text" value="{{nom}}" name="quyi" width="0px" style="opacity: 0;">
+                <input type="text" value="{{i.compt}}" name="quypmi" width="0px" style="opacity: 0;">
+
+                <button type="submit" style="text-decoration: none;color: white;border: none;" ><h1 id="class" style="text-align: center;">{{i.vai}}</h1></button>
+            </form>
+        </div>
+        {% endif %}
+        {% endif %}
+
+
+        {% if i.compt == 20 %}
+        {% if i.vai == "faux" %}
+        <div class="tes">
+            <form action="/ans" method="post" >
+                <input type="text" value="{{nom}}" name="quyi" width="0px" style="opacity: 0;">
+                <input type="text" value="-1" name="quypmi" width="0px" style="opacity: 0;">
+
+                <button type="submit" style="text-decoration: none;color: white;border: none;" ><h1 id="class" style="text-align: center;">{{i.vai}}</h1></button>
+            </form>
+        </div>
+        {% endif %}
+        {% if i.vai == "vrai" %}
+        <div class="tes2">
+            
+
+            <form action="/ans" method="post" >
+                <input type="text" value="{{nom}}" name="quyi" width="0px" style="opacity: 0;">
+                <input type="text" value="-1" name="quypmi" width="0px" style="opacity: 0;">
+
+                <button type="submit" style="text-decoration: none;color: white;border: none;" ><h1 id="class" style="text-align: center;">{{i.vai}}</h1></button>
+            </form>
+        </div>
+        {% endif %}
+        {% endif %}
+        
+    </div>
+    {% endfor %}
+</body>
+</html>

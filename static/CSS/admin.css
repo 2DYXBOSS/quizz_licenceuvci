@@ -176,6 +176,10 @@ body {
     background-color: rgb(255, 255, 255);
     text-decoration: none;
     font-weight: bolder;
+    margin: 0 auto;
+    text-align: center;
+    border: none;
+    
 }
 
 section {
@@ -183,6 +187,7 @@ section {
     background-color: rgba(15, 15, 121, 0.575);
     border-radius: 20px;
     margin: 0 auto;
+    margin-bottom: 10px;
 }
 .clase5 {
     width: 100%;

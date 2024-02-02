@@ -90,6 +90,38 @@ class classement(db.Model):
             "note": self.note,
             
         }
+
+with app.app_context() :
+    try :
+        db.create_all()
+    except Exception as e:
+        print("error de creation de la table")
+class answepm(db.Model):
+
+    id = db.Column(db.Integer, primary_key = True)
+    compt = db.Column(db.Integer)
+    vai = db.Column(db.String(20), unique = False , nullable = False)
+    mail = db.Column(db.String(20), unique = False , nullable = False)
+    question = db.Column(db.Integer)
+    reponse = db.Column(db.Integer)
+    
+    def __init__(self,compt,vai,mail,question,reponse):
+        self.compt = compt
+        self.vai = vai
+        self.mail = mail
+        self.question = question
+        self.reponse = reponse
+    
+    def __repr__(self):
+        
+        return {
+            "compt": self.compt,
+            "vai": self.vai,
+            "mail": self.mail,
+            "question": self.question,
+            "reponse": self.reponse,
+            
+        }
     
 with app.app_context() :
     try :
@@ -236,8 +268,20 @@ def acceuil():
     user.note = 0
     db.session.commit()
 
-    
+    # ude = answepm.query.all()
+    # for i in ude:
+    #     if i.mail==useru.nom :
+    #         udep = answepm.query.all()
+    #         db.session.delete(i.id)
+    #         db.session.commit()
+    ude = answepm.query.filter_by(mail=useru.nom).all()
 
+    for i in ude:
+        db.session.delete(i)
+
+    db.session.commit()
+
+        
 
     db.session.commit()
     return render_template("acceuil.html")
@@ -349,11 +393,18 @@ def pons():
         user = compte.query.get(2)
         user.comp = user.comp + 1
         db.session.commit()
+
+        ajout = answepm(compt=az,vai="vrai",mail=useru.nom,question=question,reponse=reponse)
+        db.session.add(ajout)
+        db.session.commit()
         return redirect("/bien")
     
     # ust = classement.query.get(1)
     # ust.note = 0
     # db.session.commit()
+    ajout = answepm(compt=az,vai="faux",mail=useru.nom,question=question,reponse=reponse)
+    db.session.add(ajout)
+    db.session.commit()
     return redirect("/mention")
 
 
@@ -446,9 +497,9 @@ def admin():
     #         qsw = tab.index(o)
     #         break
     
-    session.pop('utilisateur_id', None)
     
-    return render_template("admin.html",tab=qcs,comp=comp,maxe=txs,lenm=lenm,qsw=qsw)
+    
+    return render_template("admin.html",tab=qcs,comp=comp,maxe=txs,lenm=lenm,qsw=qsw,sessionpp=sessionp.nom)
 
 
 
@@ -506,7 +557,8 @@ def sprome() :
     eude = [eudeu,Profilesp]
     user = Profiles.query.filter_by(nom = request.form.get("nom") , password = request.form.get("password")).first()
     userr = Connecter.query.filter_by(nom = request.form.get("nom") ,password = request.form.get("password")).first()
-
+    eudeuy = answepm.query.all()
+    
     if user :
         
         datae = Profiles.query.get(user.id)
@@ -553,8 +605,92 @@ def is_translator_request():
 #         abort(403)  # Interdit l'accès si une requête provient d'un traducteur automatique
 
     # Le reste du code pour la page d'accueil
-    return "Bienvenue sur mon site !"
+    # return "Bienvenue sur mon site !"
 
+@app.route('/ans',methods = ["POST"])
+def ans():
+   
+    eude = Maboutik.query.all()
+    i = compte.query.filter_by(id=1).first()
+    az = i.comp
+    
+    # print(az)
+    nom=request.form.get("quyi")
+    nomypm=request.form.get("quypmi")
+    print("me lo ",nomypm)
+    
+    if int(nomypm)==-1 :
+        print("sdfg")
+        user = Maboutik.query.filter_by(id=20).first()
+        
+    else:
+        user = Maboutik.query.filter_by(id=nomypm).first()
+    
+    question = user.question
+    deux= user.deux
+    premier= user.premier
+    trois = user.trois
+    quatre =user.quatre
+    reponse= user.reponse
+    userup = compte.query.get(2)
+    cd = userup.comp
+    # print(cd)
+    plo = compte.query.get(1)
+    plop = plo.comp
+    gang = [question,[premier,deux,trois,quatre],int(nomypm)]
+    
+    
+    
+    # answepm
+    eude = answepm.query.all()
+    ez = []
+    for i in eude :
+        if i.mail == nom :
+            ez.append(i)
 
+    
+    inde = Maboutik.query.get(int(nomypm))
+    indeet = answepm.query.get(int(nomypm))
+    if int(nomypm)==20 or int(nomypm)==-1 or indeet==20 or indeet==-1:
+        nomypm=-1
+        fdsg = ez[-1].vai
+        inde = Maboutik.query.get(20)
+        indeet = answepm.query.get(20)
+        print("a",inde.reponse)
+        # print(nomypm)
+        # print(fdsg)
+
+    if indeet == 1 :
+        indeet = 2
+    elif indeet == 2:
+        indeet == 1
+    else :
+        pass
+    fdsg = ez[int(nomypm)].vai
+    comptc = ez[int(nomypm)].compt
+    if fdsg == "faux":
+        a=0
+    else :
+        a=1
+    # print(fdsg)
+    print("ak",inde.reponse)
+    print("b",indeet.question)
+    return render_template("ans.html",gang=gang,eude=eude,fdsg=fdsg,inde=int(inde.reponse),indeet=int(indeet.question))
+    # print(useru.nom)
+    
+   
+
+@app.route('/imp',methods=["POST"])
+def imp():
+    user = Profiles.query.filter_by(nom=request.form.get("quyi")).first()
+    nom=request.form.get("quyi")
+    # answepm
+    eude = answepm.query.all()
+    ez = []
+    for i in eude :
+        if i.mail == nom :
+            ez.append(i)
+    print(eude[1].vai)
+    return render_template('imp.html',eude=ez,nom=nom)
 if __name__ == '__main__' :
     app.run(debug=True,port=5007)
