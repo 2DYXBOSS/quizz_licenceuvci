@@ -13,6 +13,9 @@
 </head>
 <body>
     <div class="aqwxc">
+        
+
+
             {% if maxe[0]>= 10 %}
         <div class="clase" style="color: white;">
             <a href="/fin" style="text-decoration: none;color: white;"><h1 id="class" style="text-align: center;">Félicitations à toi !!!<span style="text-transform: uppercase;font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">{{maxe[1]}}</span> </h1></a>
@@ -30,7 +33,7 @@
                     <h1 id="lo11">{{qsw}}</h1>
                 </div>
                 <div class="lo12">
-                    <h2 style="text-transform: uppercase;">{{maxe[1]}}</h2>
+                    <h2 style="text-transform: uppercase;font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;color: #030d66;;font-weight: bolder;">{{maxe[1]}}</h2>
                 </div>
                 
                 
@@ -84,7 +87,7 @@
                     </div>
                     
                     <div class="lo12">
-                        <p style="text-transform: uppercase;font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">{{ i[1] }}</p>
+                        <p style="text-transform: uppercase;font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;color: #030d66;;font-weight: bolder;">{{ i[1] }}</p>
                     </div>
                     
                     {% if i[0] >= 10 %}
@@ -109,11 +112,11 @@
                     <form action="imp" method="post" >
                         <input type="text" value="{{maxe[1]}}" name="quyi" width="0px" style="opacity: 0;">
     
-                        <button type="submit" id="dec"><img src="{{ url_for('static', filename='IMAGE/Pefom.png')}}" alt="" width="30px"> Performance</button>
+                        <button type="submit" id="dec"><img style="filter: invert(10%) sepia(55%) saturate(3085%) hue-rotate(229deg) brightness(91%) contrast(119%);" src="{{ url_for('static', filename='IMAGE/Pefom.png')}}" alt="" width="30px"> Performance</button>
                     </form>
                 </div>
                 <div class="de1">
-                    <a href="/deconnexion" id="dec"><img src="{{ url_for('static', filename='IMAGE/hom.png')}}" alt="" width="30px"> Demain tchai !</a>
+                    <a href="/deconnexion" id="dec"><img style="filter: invert(10%) sepia(55%) saturate(3085%) hue-rotate(229deg) brightness(91%) contrast(119%);" src="{{ url_for('static', filename='IMAGE/hom.png')}}" alt="" width="30px"> Demain tchai !</a>
                 </div>
                 
                 

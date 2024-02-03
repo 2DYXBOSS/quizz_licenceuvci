@@ -6,7 +6,7 @@
 }
 
 body {
-    background-color: rgb(5, 5, 78);
+    background-color: #05054e;
 }
 .clase {
     width: 100%;
@@ -71,3 +71,13 @@ button {
     transform: translateY(-20px);
 }
 
+.dadse {
+    width: 50px;
+    position: fixed;
+    top: 100px;
+    right: 10px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

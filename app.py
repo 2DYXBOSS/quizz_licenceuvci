@@ -268,16 +268,16 @@ def acceuil():
     #         udep = answepm.query.all()
     #         db.session.delete(i.id)
     #         db.session.commit()
-    ude = answepm.query.filter_by(mail=useru.nom).all()
+    # ude = answepm.query.filter_by(mail=useru.nom).all()
 
-    for i in ude:
-        db.session.delete(i)
+    # for i in ude:
+    #     db.session.delete(i)
 
-    db.session.commit()
+    # db.session.commit()
 
         
 
-    db.session.commit()
+    # db.session.commit()
     return render_template("acceuil.html")
 
 
@@ -302,7 +302,8 @@ def index():
     if is_translator_request():
         abort(403)
     
-    
+      
+
     data = datetime.date.today()
     dataheure = datetime.datetime.now()
     formatted_time = dataheure.strftime('%H')
@@ -316,6 +317,15 @@ def index():
     eude = Maboutik.query.all()
     i = compte.query.filter_by(id=1).first()
     az = i.comp
+    if az == 1 :
+        ude = answepm.query.filter_by(mail=useru.nom).all()
+
+        for i in ude:
+            db.session.delete(i)
+
+        db.session.commit()
+
+          
     if az <= len(eude) :
         # print(az)
         
@@ -509,10 +519,7 @@ def quizz():
 
 @app.route('/classez')
 def classez():
-    if 'utilisateur_id' in session:
-        sessionp = Profiles.query.get(session['utilisateur_id'])
-    else:
-        return redirect('/pre')
+   
     classep = classement.query.all()
     eudpe = Profiles.query.all()
     datae = compte.query.get(2)
@@ -533,7 +540,7 @@ def classez():
             print("voivi ",aqsz)
             break
 
-    dss = sessionp.nom
+    
     txs= [aqsz[0],aqsz[1]]
     aouo=[20, 'Emmanuel DEDY']
     
@@ -551,7 +558,7 @@ def classez():
     
     
     
-    return render_template("classement.html",tab=qcs,comp=comp,maxe=txs,lenm=lenm,qsw=qsw,sessionpp=sessionp.nom)
+    return render_template("classement.html",tab=qcs,comp=comp,maxe=txs,lenm=lenm,qsw=qsw)
 @app.route('/admin')
 def admin():
     if 'utilisateur_id' in session:
