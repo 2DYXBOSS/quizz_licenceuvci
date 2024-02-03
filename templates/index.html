@@ -14,6 +14,20 @@
 
     
     <header>
+        <div class="hautes">
+            <div class="hautes1" id="hpou">
+                <h1 id="hde" style="color: rgb(255, 0, 0);
+            font-weight: bolder;
+            
+            font-size: 2rem;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;"><time style="color: rgb(255, 0, 0);
+            font-weight: bolder;
+            text-shadow: 2px 2px 2px gray;
+            font-size: 4rem;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;" id="currentTime" datetime=""></time></h1>
+            </div>
+            
+        </div>
         <!-- <h1 id="logo">X - <span id="logo1">QUIZZ</span></h1> -->
         
         
@@ -43,6 +57,8 @@
             <p  id="pnom">Trouvés </p>
         </div>
         
+       
+
         
     </header>
   
@@ -66,5 +82,57 @@
         
     </div>
     </div>
+
+
+
+    <script>
+        // Function to update the displayed time,min,sec
+        //function updateTime() {
+            //var currentDate = new Date();
+            //var formattedTime = currentDate.toLocaleTimeString();
+
+            // Update the content of the HTML element with id "currentTime"
+            //document.getElementById("currentTime").textContent = formattedTime;
+        //}
+        
+
+        // Call updateTime initially and set an interval to update it every second
+        //updateTime();
+        //setInterval(updateTime, 1000);//
+
+        //hautes1("rgb(255, 255, 255)");
+        
+        var a = 20
+        function updateSeconds() {
+            
+            var currentDate = new Date();
+            var currentSeconds = currentDate.getSeconds();
+            a=a-1
+            // Mettez à jour le contenu de l'élément HTML avec l'id "currentTime"
+            
+            if (a < 11 && a > 0 ) {
+                document.getElementById("currentTime").textContent = a;
+                
+                var blue = "white";
+                var bluep = "2px 3px 10px 1px gray";
+
+                document.getElementById("hpou").style.backgroundColor = blue;
+                document.getElementById("hpou").style.boxShadow = bluep;
+                
+
+            }
+            // Vérifiez si la condition pour la redirection est remplie
+            if (a === 0) {
+                window.location.replace("/mentione");
+            }
+
+
+        }
+        
+        // Appelez updateSeconds initialement et définissez un intervalle pour mettre à jour chaque seconde
+        updateSeconds();
+        setInterval(updateSeconds, 1000);
+        
+    </script>
 </body>
 </html>

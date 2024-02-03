@@ -30,6 +30,10 @@ body {
     border-radius: 0px 20px 0px 20px;
     
 }
+.fo a{
+    font-size: 0.8rem;
+    
+}
 .ques {
     width: 60%;
     height: 100%;

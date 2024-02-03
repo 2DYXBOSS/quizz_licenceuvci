@@ -1,4 +1,5 @@
 from flask import Flask ,request, abort
+from sqlalchemy import or_
 from flask_sqlalchemy import SQLAlchemy
 from flask import render_template , redirect , request,url_for,flash,Response
 from flask import render_template , redirect , request,url_for,flash,session ,Response
@@ -73,6 +74,7 @@ with app.app_context() :
         db.create_all()
     except Exception as e:
         print("error de creation de la table")
+
 class classement(db.Model):
 
     id = db.Column(db.Integer, primary_key = True)
@@ -231,14 +233,6 @@ with app.app_context() :
 
 
 
-@app.route('/mention')
-def mention():
-    if 'utilisateur_id' in session:
-        useru = Profiles.query.get(session['utilisateur_id'])
-    else:
-        return redirect('/pre')
-    return render_template("mention.html")
-
 
 
 @app.route('/bien')
@@ -289,8 +283,15 @@ def acceuil():
 
 @app.route('/add')
 def add():
-    
+    ude = Maboutik.query.filter(or_(Maboutik.reponse == 1, Maboutik.reponse == 2, Maboutik.reponse == 3, Maboutik.reponse == 4)).all()
+
+    for i in ude:
+        db.session.delete(i)
+
+    db.session.commit()
     return render_template("quizz.html")
+
+
 
 @app.route('/index')
 def index():
@@ -301,17 +302,17 @@ def index():
     if is_translator_request():
         abort(403)
     
-        
+    
     data = datetime.date.today()
     dataheure = datetime.datetime.now()
     formatted_time = dataheure.strftime('%H')
     formatted = dataheure.strftime('%M')
     sec = dataheure.strftime('%S')
-    # print(formatted_time)
+    # print(formatted_time)sc
     # print(formatted)
     # print(sec)
     # print(dataheure)
-
+    
     eude = Maboutik.query.all()
     i = compte.query.filter_by(id=1).first()
     az = i.comp
@@ -409,6 +410,55 @@ def pons():
 
 
 
+@app.route('/mention')
+def mention():
+    if 'utilisateur_id' in session:
+        useru = Profiles.query.get(session['utilisateur_id'])
+    else:
+        return redirect('/pre')
+    
+    
+    return render_template("mention.html")
+
+
+
+@app.route('/mentione')
+def mentione():
+    if 'utilisateur_id' in session:
+        useru = Profiles.query.get(session['utilisateur_id'])
+    else:
+        return redirect('/pre')
+    
+    
+
+    eude = Maboutik.query.all()
+    i = compte.query.filter_by(id=1).first()
+    az = i.comp
+    user = Maboutik.query.filter_by(id=az).first()
+    
+    
+    reponse= user.reponse
+    taz = []
+    eudpe = compte.query.all()
+    user = compte.query.get(1)
+    if user.comp <= len(eude) :
+        user.comp = user.comp + 1
+        # print(user.comp)
+        
+        db.session.commit()
+    else : 
+        return redirect("/")
+
+    question = int(reponse)+1
+
+    ajout = answepm(compt=az,vai="faux",mail=useru.nom,question=str(question),reponse=reponse)
+    db.session.add(ajout)
+    db.session.commit()
+
+
+    return render_template("mention.html")
+
+
 # DECONNEXION {}
 @app.route('/deconnexion')
 def deconnexion():
@@ -457,6 +507,51 @@ def quizz():
 
 
 
+@app.route('/classez')
+def classez():
+    if 'utilisateur_id' in session:
+        sessionp = Profiles.query.get(session['utilisateur_id'])
+    else:
+        return redirect('/pre')
+    classep = classement.query.all()
+    eudpe = Profiles.query.all()
+    datae = compte.query.get(2)
+    tab = []
+    for i in classep :
+        tab.append([i.note,i.comp ])
+    q=[]
+    tab = sorted(tab)
+    w= reversed(tab)
+    comp=[]
+    for i in tab:
+        q.append(i[0])
+
+    maxe = max(q)
+    for i in tab:
+        if maxe == i[0] :
+            aqsz = i
+            print("voivi ",aqsz)
+            break
+
+    dss = sessionp.nom
+    txs= [aqsz[0],aqsz[1]]
+    aouo=[20, 'Emmanuel DEDY']
+    
+    print(txs,maxe,aqsz[1])
+    lenm= len(tab)-2
+    qcs=[]
+    for a in tab[::-1]:
+        qcs.append(a)
+
+    qsw = qcs.index(txs)+1
+    # for o in qcs :
+    #     if o == txs :
+    #         qsw = tab.index(o)
+    #         break
+    
+    
+    
+    return render_template("classement.html",tab=qcs,comp=comp,maxe=txs,lenm=lenm,qsw=qsw,sessionpp=sessionp.nom)
 @app.route('/admin')
 def admin():
     if 'utilisateur_id' in session:
