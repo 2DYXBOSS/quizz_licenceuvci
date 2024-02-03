@@ -16,10 +16,7 @@
         <h1 id="logo">ZEEERRRRROOOO !</h1>
         
         
-        <audio id="audio" controls preload="auto" style="opacity: 0;">
-            <source src="{{ url_for('static', filename='IMAGE/Zero.m4a')}}" type="audio/mp4">
-            Votre navigateur ne supporte pas l'élément audio.
-        </audio>
+       
     </div>
    
     <div class="lo">
@@ -30,10 +27,16 @@
             Ehhh DEDY d'accord , suivant !!!
         </a>
     </div>
-
+    <audio id="audio" controls preload="auto" style="opacity: 0;">
+        <source src="{{ url_for('static', filename='IMAGE/Zero.m4a')}}" type="audio/mp4">
+        Votre navigateur ne supporte pas l'élément audio.
+    </audio>
     <script>
-        var audio = document.getElementById("audio");
-        audio.play();
+        function updateSeconds() {
+            var audio = document.getElementById("audio");
+            audio.play();
+        }
+        updateSeconds();
     </script>
 </div>
 </body>
