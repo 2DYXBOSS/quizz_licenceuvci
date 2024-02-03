@@ -16,7 +16,7 @@
         <h1 id="logo">ZEEERRRRROOOO !</h1>
         
         
-        <audio controls autoplay preload="auto" style="opacity: 0;">
+        <audio id="audio" controls preload="auto" style="opacity: 0;">
             <source src="{{ url_for('static', filename='IMAGE/Zero.m4a')}}" type="audio/mp4">
             Votre navigateur ne supporte pas l'élément audio.
         </audio>
@@ -30,6 +30,11 @@
             Ehhh DEDY d'accord , suivant !!!
         </a>
     </div>
+
+    <script>
+        var audio = document.getElementById("audio");
+        audio.play();
+    </script>
 </div>
 </body>
 </html>
