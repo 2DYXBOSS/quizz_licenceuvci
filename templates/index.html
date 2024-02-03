@@ -25,6 +25,8 @@
             text-shadow: 2px 2px 2px gray;
             font-size: 4rem;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;" id="currentTime" datetime=""></time></h1>
+
+                
             </div>
             
         </div>
@@ -82,8 +84,12 @@
         
     </div>
     </div>
-
-
+    <!-- autoplay -->
+    <audio id="audio" controls  preload="auto" style="opacity: 0;">
+        <source src="{{ url_for('static', filename='IMAGE/Decomper.m4a')}}" type="audio/mp4">
+    Votre navigateur ne supporte pas l'élément audio.
+    </audio>
+    
 
     <script>
         // Function to update the displayed time,min,sec
@@ -102,19 +108,22 @@
 
         //hautes1("rgb(255, 255, 255)");
         
-        var a = 20
+        var a = 25
         function updateSeconds() {
-            
+            var audio = document.getElementById("audio");
             var currentDate = new Date();
             var currentSeconds = currentDate.getSeconds();
             a=a-1
             // Mettez à jour le contenu de l'élément HTML avec l'id "currentTime"
-            
+            if (a === 14) {
+                audio.play();
+            }
             if (a < 11 && a > 0 ) {
                 document.getElementById("currentTime").textContent = a;
                 
                 var blue = "white";
                 var bluep = "2px 3px 10px 1px gray";
+                
 
                 document.getElementById("hpou").style.backgroundColor = blue;
                 document.getElementById("hpou").style.boxShadow = bluep;
