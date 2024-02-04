@@ -459,7 +459,13 @@ def mentione():
     else : 
         return redirect("/")
 
-    question = int(reponse)+1
+    if reponse < 4 :
+        question = int(reponse)+1
+    elif reponse == 4 :
+        question = int(reponse)-1
+    else :
+        pass
+
 
     ajout = answepm(compt=az,vai="faux",mail=useru.nom,question=str(question),reponse=reponse)
     db.session.add(ajout)
