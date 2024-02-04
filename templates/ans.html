@@ -18,7 +18,12 @@
         
         <div class="isma1">
             <div class="ism1">
+                
+                {% if gang[2]==-1 %}
+                <p style="color: white;">20</p>
+                {% else %}
                 <p style="color: white;">{{gang[2]}}</p>
+                {% endif %}
             </div>
             <p  id="pnom">Questions </p>
         </div>

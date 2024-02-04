@@ -98,7 +98,7 @@ with app.app_context() :
         db.create_all()
     except Exception as e:
         print("error de creation de la table")
-class answepm(db.Model):
+class Answepm(db.Model):
 
     id = db.Column(db.Integer, primary_key = True)
     compt = db.Column(db.Integer)
@@ -262,13 +262,13 @@ def acceuil():
     user.note = 0
     db.session.commit()
 
-    # ude = answepm.query.all()
+    # ude = Answepm.query.all()
     # for i in ude:
     #     if i.mail==useru.nom :
-    #         udep = answepm.query.all()
+    #         udep = Answepm.query.all()
     #         db.session.delete(i.id)
     #         db.session.commit()
-    # ude = answepm.query.filter_by(mail=useru.nom).all()
+    # ude = Answepm.query.filter_by(mail=useru.nom).all()
 
     # for i in ude:
     #     db.session.delete(i)
@@ -318,7 +318,7 @@ def index():
     i = compte.query.filter_by(id=1).first()
     az = i.comp
     if az == 1 :
-        ude = answepm.query.filter_by(mail=useru.nom).all()
+        ude = Answepm.query.filter_by(mail=useru.nom).all()
 
         for i in ude:
             db.session.delete(i)
@@ -405,7 +405,7 @@ def pons():
         user.comp = user.comp + 1
         db.session.commit()
 
-        ajout = answepm(compt=az,vai="vrai",mail=useru.nom,question=question,reponse=reponse)
+        ajout = Answepm(compt=az,vai="vrai",mail=useru.nom,question=question,reponse=reponse)
         db.session.add(ajout)
         db.session.commit()
         return redirect("/bien")
@@ -413,7 +413,7 @@ def pons():
     # ust = classement.query.get(1)
     # ust.note = 0
     # db.session.commit()
-    ajout = answepm(compt=az,vai="faux",mail=useru.nom,question=question,reponse=reponse)
+    ajout = Answepm(compt=az,vai="faux",mail=useru.nom,question=question,reponse=reponse)
     db.session.add(ajout)
     db.session.commit()
     return redirect("/mention")
@@ -459,7 +459,7 @@ def mentione():
     else : 
         return redirect("/")
 
-    if reponse < 4 :
+    if int(reponse) < 4 :
         question = int(reponse)+1
     elif reponse == 4 :
         question = int(reponse)-1
@@ -467,7 +467,7 @@ def mentione():
         pass
 
 
-    ajout = answepm(compt=az,vai="faux",mail=useru.nom,question=str(question),reponse=reponse)
+    ajout = Answepm(compt=az,vai="faux",mail=useru.nom,question=str(question),reponse=reponse)
     db.session.add(ajout)
     db.session.commit()
 
@@ -665,7 +665,7 @@ def sprome() :
     eude = [eudeu,Profilesp]
     user = Profiles.query.filter_by(nom = request.form.get("nom") , password = request.form.get("password")).first()
     userr = Connecter.query.filter_by(nom = request.form.get("nom") ,password = request.form.get("password")).first()
-    eudeuy = answepm.query.all()
+    eudeuy = Answepm.query.all()
     
     if user :
         
@@ -749,8 +749,8 @@ def ans():
     
     
     
-    # answepm
-    eude = answepm.query.all()
+    # Answepm
+    eude = Answepm.query.all()
     ez = []
     for i in eude :
         if i.mail == nom :
@@ -758,32 +758,46 @@ def ans():
 
     
     inde = Maboutik.query.get(int(nomypm))
-    indeet = answepm.query.get(int(nomypm))
-    if int(nomypm)==20 or int(nomypm)==-1 or indeet==20 or indeet==-1:
+    indeet = Answepm.query.get(int(nomypm))
+    # print(int(nomypm),indeet)
+    # or indeet==20 or indeet==-1
+    if int(nomypm)==20 or int(nomypm)==-1 :
+        
+
         nomypm=-1
+        inde = Maboutik.query.get(int(nomypm))
+        indeet = Answepm.query.get(20)
+        print("20Nous",indeet.question)
         fdsg = ez[-1].vai
         inde = Maboutik.query.get(20)
-        indeet = ez[-1]
-        print("a",inde.reponse)
+        ind = ez[-1]
+        
+        # cdf = indeet.question
+        fdsg = ez[int(nomypm)].vai
+        print("bonne",int(inde.reponse))
+        # print("a",inde.reponse)
         # print(nomypm)
         # print(fdsg)
-
-    if indeet == 1 :
-        indeet = 2
-    elif indeet == 2:
-        indeet == 1
-    else :
-        pass
+        return render_template("ans.html",gang=gang,eude=eude,fdsg=fdsg,inde=int(inde.reponse),indeet=indeet)
+    print("bonne",int(inde.reponse))
+    # if indeet == 1 :
+    #     indeet = 2
+    # elif indeet == 2:
+    #     indeet == 1
+    # else :
+    #     pass
     fdsg = ez[int(nomypm)].vai
     comptc = ez[int(nomypm)].compt
-    if fdsg == "faux":
-        a=0
-    else :
-        a=1
+    # if fdsg == "faux":
+    #     a=0
+    # else :
+    #     a=1
     # print(fdsg)
-    print("ak",inde.reponse)
-    print("b",indeet.question)
-    return render_template("ans.html",gang=gang,eude=eude,fdsg=fdsg,inde=int(inde.reponse),indeet=int(indeet.question))
+    # print("ak",inde.reponse)
+    # print("b",indeet.question)
+        
+    print("Nous",indeet.question)
+    return render_template("ans.html",gang=gang,eude=eude,fdsg=fdsg,inde=int(inde.reponse),indeet=indeet.question)
     # print(useru.nom)
     
    
@@ -792,8 +806,8 @@ def ans():
 def imp():
     user = Profiles.query.filter_by(nom=request.form.get("quyi")).first()
     nom=request.form.get("quyi")
-    # answepm
-    eude = answepm.query.all()
+    # Answepm
+    eude = Answepm.query.all()
     ez = []
     for i in eude :
         if i.mail == nom :

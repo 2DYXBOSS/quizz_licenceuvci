@@ -22,6 +22,7 @@ h1,h2 {
     body {
         width: 100%;
         overflow: hidden;
+        
         background-color: rgb(5, 5, 78);
     }
     a {
