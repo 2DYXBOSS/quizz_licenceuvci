@@ -7,16 +7,17 @@
 body {
     
     width: 100%;
+    
     background: url(/static/IMAGE/ezzz.jpg) 50% no-repeat;
     background-size: cover;
-    
 }
 .aqwxc {
     width: 100%;
     /* max-width: 600px; */
     margin: 0 auto;
     margin-top: 20px;
-    
+    background: url(/static/IMAGE/ezzz.jpg) 50% no-repeat;
+    background-size: cover;
 }
 
 header {
