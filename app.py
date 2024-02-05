@@ -767,7 +767,9 @@ def ans():
         nomypm=-1
         inde = Maboutik.query.get(int(nomypm))
         indeet = Answepm.query.get(20)
+        # print("20Nous",indeet)
         print("20Nous",indeet.question)
+        indeet = indeet.question
         fdsg = ez[-1].vai
         inde = Maboutik.query.get(20)
         ind = ez[-1]
