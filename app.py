@@ -7,6 +7,7 @@ from flask import render_template , redirect , request,url_for,flash,session ,Re
 
 import datetime
 
+
 data = datetime.date.today()
 dataheure = datetime.datetime.now()
 formatted_time = dataheure.strftime('%H')
