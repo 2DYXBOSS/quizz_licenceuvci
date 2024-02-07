@@ -25,24 +25,29 @@
             <form action="/ans" method="post" >
                 <input type="text" value="{{nom}}" name="quyi" width="0px" style="opacity: 0;">
                 <input type="text" value="{{i.compt}}" name="quypmi" width="0px" style="opacity: 0;">
-
+                <input type="text" value="{{i.question}}" name="mareponse" width="0px" style="opacity: 0;">
+                <input type="text" value="{{i.reponse}}" name="laquestion" width="0px" style="opacity: 0;">
+                <input type="text" value="{{i.vai}}" name="mention" width="0px" style="opacity: 0;">
                 <button type="submit" style="text-decoration: none;color: white;border: none;" ><h1 id="class" style="text-align: center;">{{i.vai}}</h1></button>
             </form>
         </div>
-        {% endif %}
-        {% if i.vai == "vrai" %}
+        
+        {% elif i.vai == "vrai" %}
         <div class="tes2">
             
 
             <form action="/ans" method="post" >
                 <input type="text" value="{{nom}}" name="quyi" width="0px" style="opacity: 0;">
                 <input type="text" value="{{i.compt}}" name="quypmi" width="0px" style="opacity: 0;">
-
+                <input type="text" value="{{i.question}}" name="mareponse" width="0px" style="opacity: 0;">
+                <input type="text" value="{{i.reponse}}" name="laquestion" width="0px" style="opacity: 0;">
+                <input type="text" value="{{i.vai}}" name="mention" width="0px" style="opacity: 0;">
                 <button type="submit" style="text-decoration: none;color: white;border: none;" ><h1 id="class" style="text-align: center;">{{i.vai}}</h1></button>
             </form>
         </div>
         {% endif %}
         {% endif %}
+        
 
 
         {% if i.compt == 20 %}
@@ -51,25 +56,30 @@
             <form action="/ans" method="post" >
                 <input type="text" value="{{nom}}" name="quyi" width="0px" style="opacity: 0;">
                 <input type="text" value="-1" name="quypmi" width="0px" style="opacity: 0;">
-
+                <input type="text" value="{{i.question}}" name="mareponse" width="0px" style="opacity: 0;">
+                <input type="text" value="{{i.reponse}}" name="laquestion" width="0px" style="opacity: 0;">
+                <input type="text" value="{{i.vai}}" name="mention" width="0px" style="opacity: 0;">
                 <button type="submit" style="text-decoration: none;color: white;border: none;" ><h1 id="class" style="text-align: center;">{{i.vai}}</h1></button>
             </form>
         </div>
-        {% endif %}
-        {% if i.vai == "vrai" %}
+        
+        {% elif i.vai == "vrai" %}
         <div class="tes2">
             
 
             <form action="/ans" method="post" >
                 <input type="text" value="{{nom}}" name="quyi" width="0px" style="opacity: 0;">
                 <input type="text" value="-1" name="quypmi" width="0px" style="opacity: 0;">
-
+                <input type="text" value="{{i.question}}" name="mareponse" width="0px" style="opacity: 0;">
+                <input type="text" value="{{i.reponse}}" name="laquestion" width="0px" style="opacity: 0;">
+                <input type="text" value="{{i.vai}}" name="mention" width="0px" style="opacity: 0;">
                 <button type="submit" style="text-decoration: none;color: white;border: none;" ><h1 id="class" style="text-align: center;">{{i.vai}}</h1></button>
             </form>
         </div>
         {% endif %}
         {% endif %}
-        
+       
+
     </div>
     {% endfor %}
 </body>

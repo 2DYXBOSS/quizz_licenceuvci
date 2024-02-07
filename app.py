@@ -131,20 +131,46 @@ with app.app_context() :
         db.create_all()
     except Exception as e:
         print("error de creation de la table")
-class compte(db.Model):
+class cept(db.Model):
 
     id = db.Column(db.Integer, primary_key = True)
-    comp = db.Column(db.Integer)
+    exo = db.Column(db.Integer)
+    point = db.Column(db.Integer)
+    email = db.Column(db.String(20), unique = False , nullable = False)
     
-    def __init__(self,comp):
-        self.comp = comp
+    def __init__(self,exo,point,email):
+        self.exo = exo
+        self.point = point
+        self.email = email
     
     def __repr__(self):
         
         return {
-            "comp": self.comp,
+            "exo": self.exo,
+            "point": self.point,
+            "email": self.email,
             
         }
+    
+# with app.app_context() :
+#     try :
+#         db.create_all()
+#     except Exception as e:
+#         print("error de creation de la table")
+# class compte(db.Model):
+
+#     id = db.Column(db.String(20), unique = False , nullable = False, primary_key = True)
+#     comp = db.Column(db.Integer)
+    
+#     def __init__(self,comp):
+#         self.comp = comp
+    
+#     def __repr__(self):
+        
+#         return {
+#             "comp": self.comp,
+            
+#         }
     
 
 with app.app_context() :
@@ -249,14 +275,17 @@ def bien():
 def acceuil():
     if 'utilisateur_id' in session:
         useru = Profiles.query.get(session['utilisateur_id'])
+        print(session['utilisateur_id'])
+        print(useru.nom)
     else:
         return redirect('/pre')
-    user = compte.query.get(1)
-    user.comp = 1
-    db.session.commit()
-
-    user = compte.query.get(2)
-    user.comp = 0
+    userz = cept.query.filter_by(email=useru.nom).first()
+   
+    print("dfzggsjhsysyhzg",userz.exo,userz.point,userz.email,"dfzggsjhsysyhzg")
+    # user = cept.query.get(user.id)
+    
+    userz.exo = 1
+    userz.point = 0
     db.session.commit()
 
     user = classement.query.get(session['utilisateur_id'])
@@ -316,8 +345,10 @@ def index():
     # print(dataheure)
     
     eude = Maboutik.query.all()
-    i = compte.query.filter_by(id=1).first()
-    az = i.comp
+    i = cept.query.filter_by(email=useru.nom).first()
+    # print(i)
+
+    az = i.exo
     if az == 1 :
         ude = Answepm.query.filter_by(mail=useru.nom).all()
 
@@ -338,16 +369,16 @@ def index():
         trois = user.trois
         quatre =user.quatre
         reponse= user.reponse
-        userup = compte.query.get(2)
-        cd = userup.comp
+        userup = cept.query.filter_by(email=useru.nom).first()
+        cd = userup.point
         # print(cd)
-        plo = compte.query.get(1)
-        plop = plo.comp
+        plo = cept.query.filter_by(email=useru.nom).first()
+        plop = plo.exo
         gang = [question,[premier,deux,trois,quatre]]
         return render_template("index.html",gang=gang,sec=sec,cd=cd,plop=plop)
     # print(useru.nom)
-    plo = compte.query.get(1)
-    plop = plo.comp
+    plo = cept.query.filter_by(email=useru.nom).first()
+    plop = plo.exo
     print(useru.nom)
     user = classement.query.filter_by(comp=useru.nom).first()
     fds = user.id
@@ -366,9 +397,9 @@ def pons():
     if is_translator_request():
         abort(403)
     eude = Maboutik.query.all()
-    i = compte.query.filter_by(id=1).first()
-    az = i.comp
     
+    i = cept.query.filter_by(email=useru.nom).first()
+    az = i.exo
    
     user = Maboutik.query.filter_by(id=az).first()
     
@@ -385,10 +416,14 @@ def pons():
         # eudpe = classement.query.all()
         # cla = classement.query.get(1)
         taz = []
-        eudpe = compte.query.all()
-        user = compte.query.get(1)
-        if user.comp <= len(eude) :
-            user.comp = user.comp + 1
+        # eudpe = compte.query.all()
+
+
+        ivd = cept.query.filter_by(email=useru.nom).first()
+        user = ivd.exo
+       
+        if ivd.exo <= len(eude) :
+            ivd.exo = ivd.exo + 1
             # print(user.comp)
             
             db.session.commit()
@@ -401,9 +436,10 @@ def pons():
         # azp = ust.note+1
         # ust.note = azp
         # db.session.commit()
-
-        user = compte.query.get(2)
-        user.comp = user.comp + 1
+        ivdz = cept.query.filter_by(email=useru.nom).first()
+        user = ivdz.point
+    
+        ivdz.point = ivdz.point + 1
         db.session.commit()
 
         ajout = Answepm(compt=az,vai="vrai",mail=useru.nom,question=question,reponse=reponse)
@@ -443,17 +479,20 @@ def mentione():
     
 
     eude = Maboutik.query.all()
-    i = compte.query.filter_by(id=1).first()
-    az = i.comp
+   
+    i = cept.query.filter_by(email=useru.nom).first()
+    az = i.exo
     user = Maboutik.query.filter_by(id=az).first()
     
     
     reponse= user.reponse
     taz = []
-    eudpe = compte.query.all()
-    user = compte.query.get(1)
-    if user.comp <= len(eude) :
-        user.comp = user.comp + 1
+    # eudpe = compte.query.all()
+    iez = cept.query.filter_by(email=useru.nom).first()
+    user = iez.exo
+    
+    if iez.exo <= len(eude) :
+        iez.exo = iez.exo + 1
         # print(user.comp)
         
         db.session.commit()
@@ -488,11 +527,14 @@ def fin():
         useru = Profiles.query.get(session['utilisateur_id'])
     else:
         return redirect('/pre')
-    usz = compte.query.get(1)
-    moi = usz.comp//2
-    pet = usz.comp-1
-    user = compte.query.get(2)
-    gang = user.comp
+    iez = cept.query.filter_by(email=useru.nom).first()
+    usz = iez.exo
+    moi = iez.exo//2
+    pet = iez.exo-1
+    ieze = cept.query.filter_by(email=useru.nom).first()
+    user = ieze.point
+   
+    gang = ieze.point
     uszt = classement.query.get(session['utilisateur_id'])
     uszt.note = gang
     uszt.comp = uszt.comp
@@ -529,7 +571,8 @@ def classez():
    
     classep = classement.query.all()
     eudpe = Profiles.query.all()
-    datae = compte.query.get(2)
+    
+    # datae = compte.query.get(2)
     tab = []
     for i in classep :
         tab.append([i.note,i.comp ])
@@ -574,7 +617,9 @@ def admin():
         return redirect('/pre')
     classep = classement.query.all()
     eudpe = Profiles.query.all()
-    datae = compte.query.get(2)
+    ieze = cept.query.filter_by(email=sessionp.nom).first()
+    datae = ieze.point
+   
     tab = []
     for i in classep :
         tab.append([i.note,i.comp ])
@@ -593,7 +638,7 @@ def admin():
             break
 
     dss = sessionp.nom
-    txs= [datae.comp,dss]
+    txs= [ieze.point,dss]
     print(txs)
     lenm= len(tab)-2
     qcs=[]
@@ -643,6 +688,10 @@ def insc() :
         db.session.add(classem)
         db.session.commit()
 
+
+    ajout = cept(exo=1,point=0,email=nom)
+    db.session.add(ajout)
+    db.session.commit()
     return redirect("/pre")
 
     
@@ -719,17 +768,22 @@ def is_translator_request():
 @app.route('/ans',methods = ["POST"])
 def ans():
    
-    eude = Maboutik.query.all()
-    i = compte.query.filter_by(id=1).first()
-    az = i.comp
+    
+   
     
     # print(az)
     nom=request.form.get("quyi")
     nomypm=request.form.get("quypmi")
-    print("me lo ",nomypm)
+    mareponse=request.form.get("mareponse")
+    laquestion=request.form.get("laquestion")
+    mention=request.form.get("mention")
+    eude = Maboutik.query.all()
+    i = cept.query.filter_by(email=nom).first()
+    az = i.exo
+    print("QUESTION ",nomypm)
     
     if int(nomypm)==-1 :
-        print("sdfg")
+        # print("sdfg")
         user = Maboutik.query.filter_by(id=20).first()
         
     else:
@@ -741,11 +795,15 @@ def ans():
     trois = user.trois
     quatre =user.quatre
     reponse= user.reponse
-    userup = compte.query.get(2)
-    cd = userup.comp
+    ieze = cept.query.filter_by(email=nom).first()
+    userup = ieze.point
+    
+    cd = ieze.point
     # print(cd)
-    plo = compte.query.get(1)
-    plop = plo.comp
+    iezze = cept.query.filter_by(email=nom).first()
+    plo = iezze.exo
+    
+    plop = iezze.exo
     gang = [question,[premier,deux,trois,quatre],int(nomypm)]
     
     
@@ -753,36 +811,40 @@ def ans():
     # Answepm
     eude = Answepm.query.all()
     ez = []
-    for i in eude :
-        if i.mail == nom :
-            ez.append(i)
+    for iz in eude :
+        if iz.mail == nom :
+            ez.append(iz)
 
     
-    inde = Maboutik.query.get(int(nomypm))
-    indeet = Answepm.query.get(int(nomypm))
+    # inde = Maboutik.query.get(int(nomypm))
+    indeet = ez[int(nomypm)]
+    # indeet = Answepm.query.get(int(nomypm))
     # print(int(nomypm),indeet)
     # or indeet==20 or indeet==-1
     if int(nomypm)==20 or int(nomypm)==-1 :
         
 
         nomypm=-1
-        inde = Maboutik.query.get(int(nomypm))
-        indeet = Answepm.query.get(20)
+        # inde = Maboutik.query.get(int(nomypm))
+        indee = ez[-1]
+        # indee = Answepm.query.get(20)
         # print("20Nous",indeet)
-        print("20Nous",indeet.question)
-        indeet = indeet.question
+        print("20 Notre reponse ",mareponse)
+        indeet = indee.question
+        # inde = indee.question
+        # inde = indeet.reponse
         fdsg = ez[-1].vai
-        inde = Maboutik.query.get(20)
-        ind = ez[-1]
+        # inde = Maboutik.query.get(20)
+        # ind = ez[-1]
         
         # cdf = indeet.question
         fdsg = ez[int(nomypm)].vai
-        print("bonne",int(inde.reponse))
+        print("Bonne reponse",laquestion)
         # print("a",inde.reponse)
         # print(nomypm)
         # print(fdsg)
-        return render_template("ans.html",gang=gang,eude=eude,fdsg=fdsg,inde=int(inde.reponse),indeet=indeet)
-    print("bonne",int(inde.reponse))
+        return render_template("ans.html",gang=gang,eude=eude,fdsg=mention,inde=int(laquestion),indeet=int(mareponse))
+    print("Bonne reponse ",laquestion)
     # if indeet == 1 :
     #     indeet = 2
     # elif indeet == 2:
@@ -799,8 +861,8 @@ def ans():
     # print("ak",inde.reponse)
     # print("b",indeet.question)
         
-    print("Nous",indeet.question)
-    return render_template("ans.html",gang=gang,eude=eude,fdsg=fdsg,inde=int(inde.reponse),indeet=indeet.question)
+    print("Notre reponse ",mareponse)
+    return render_template("ans.html",gang=gang,eude=eude,fdsg=mention,inde=int(laquestion),indeet=int(mareponse))
     # print(useru.nom)
     
    
@@ -810,12 +872,38 @@ def imp():
     user = Profiles.query.filter_by(nom=request.form.get("quyi")).first()
     nom=request.form.get("quyi")
     # Answepm
-    eude = Answepm.query.all()
+    eudes = Answepm.query.all()
     ez = []
-    for i in eude :
+    for i in eudes :
         if i.mail == nom :
             ez.append(i)
-    print(eude[1].vai)
+    print(eudes[1].vai)
     return render_template('imp.html',eude=ez,nom=nom)
+
+
+
+
+
+
+
+
+
+# @app.route("/suppp") 
+# def sippp():
+    
+#     ude = Answepm.query.filter_by(mail="Emmanuel DEDY").all()
+
+#     for i in ude:
+#         db.session.delete(i)
+
+#     db.session.commit()
+#     return redirect('/')
+
+
+
+
+
+
+
 if __name__ == '__main__' :
     app.run(debug=True,port=5007)
