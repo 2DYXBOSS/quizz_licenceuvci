@@ -315,8 +315,8 @@ def acceuil():
 def add():
     ude = Maboutik.query.filter(or_(Maboutik.reponse == 1, Maboutik.reponse == 2, Maboutik.reponse == 3, Maboutik.reponse == 4)).all()
 
-    for i in ude:
-        db.session.delete(i)
+    # for i in ude:
+    #     db.session.delete(i)
 
     db.session.commit()
     return render_template("quizz.html")
