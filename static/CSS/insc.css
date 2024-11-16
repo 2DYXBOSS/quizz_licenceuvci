@@ -5,6 +5,9 @@
     font-family: 'Poppins', sans-serif;
     
 }
+button , a {
+    cursor: pointer;
+}
 a{
     text-decoration: none;
 }

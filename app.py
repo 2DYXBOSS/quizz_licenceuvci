@@ -566,7 +566,7 @@ def quizz():
 
 
 
-@app.route('/classez')
+@app.route('/classement')
 def classez():
    
     classep = classement.query.all()

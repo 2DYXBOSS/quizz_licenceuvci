@@ -4,6 +4,9 @@
     padding: 0;
     font-family: 'Poppins', sans-serif;
 }
+button , a {
+    cursor: pointer;
+}
 body {
     background-color: rgb(5, 5, 78);
     width: 100%;
@@ -215,6 +218,7 @@ section {
     border-radius: 20px;
     margin: 0 auto;
     margin-bottom: 10px;
+    
 }
 .clase5 {
     width: 100%;

@@ -5,6 +5,9 @@
     font-family: 'Poppins', sans-serif;
     scroll-behavior: smooth;
 }
+button , a {
+    cursor: pointer;
+}
 h1,h2 {
     text-shadow: -1px 1px 1px  rgba(153, 150, 150, 0.507);
 }

@@ -74,7 +74,7 @@
                 <a href="/fin" style="text-decoration: none;color: white;"><h1 id="class" style="text-align: center;">Classement </h1></a>
             </div>
             {% for i in tab %}
-            <div class="lo">
+            <div class="lo" style="padding-bottom: 10px;">
                 <div class="lo1">
                     <div class="lo14">
                         <h1 id="1">{{ loop.index }}</h1>
@@ -97,18 +97,18 @@
             </div>
             {% endfor %}
             
-            <!-- <div class="deco">
-                <a href="/deconnexion" id="dec">Demain tchai !</a>
+            <div class="deco" style="height: 50px;">
+                <!-- <a href="/deconnexion" id="dec">Demain tchai !</a> -->
         
-            </div> -->
-            <div class="deco">
+            </div> 
+            <!-- <div class="deco" style="padding-left: 30px;padding-right: 30px;padding-top: 100PX;">
                 
                 <div class="de1">
-                    <a href="/deconnexion" id="dec"><img style="filter: invert(10%) sepia(55%) saturate(3085%) hue-rotate(229deg) brightness(91%) contrast(119%);" src="{{ url_for('static', filename='IMAGE/hom.png')}}" alt="" width="30px"> Demain tchai !</a>
+                    <a href="/deconnexion" id="dec"><img style="filter: invert(10%) sepia(55%) saturate(3085%) hue-rotate(229deg) brightness(91%) contrast(119%);" src="{{ url_for('static', filename='IMAGE/hom.png')}}" alt="" width="15px"> JE VAIS RECOMMENCER LE QUIZZ MAINTENANT   !!!</a>
                 </div>
                 
                 
-            </div>
+            </div> -->
         </section>
     </div>
 </body>
