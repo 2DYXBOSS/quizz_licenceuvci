@@ -12,7 +12,8 @@ body {
 }
 .aqwxc {
     width: 100%;
-    max-width: 400px;
+    max-width: 600px;
+
     margin: 0 auto;
     margin-top: 50px;
     background-color: rgb(5, 5, 78);
@@ -163,29 +164,21 @@ body {
 }
 
 .deco {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    height: 100px;
     
-    gap: 10px;
+    width: 100%;
+    height: 200px;
+    
 }
 .de1{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 50%;
+   
+    width: 100%;
     height: 100px;
     
    
 }
 .de1 form{
-    display: flex;
-    align-items: start;
-    justify-content: end;
-    width: 70%;
-    height: 50px;
+    width: 100%;
+    height: 100px;
     
    
 }
@@ -194,18 +187,21 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
+    padding-left: 50px;
+    padding-right: 50px;
     border-radius: 10px;
     padding: 10px 15px;
     font-size: 0.7rem;
     color: rgb(5, 5, 78);
     padding-top: 10px;
     margin-bottom: 50px;
-    background-color: rgb(255, 255, 255);
+    background-color: rgb(8, 203, 196);
     text-decoration: none;
     font-weight: bolder;
     margin: 0 auto;
     text-align: center;
     border: none;
+    gap: 20px;
     
 }
 

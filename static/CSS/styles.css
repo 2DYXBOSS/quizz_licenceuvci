@@ -99,7 +99,7 @@ header {
     width: 100%;
    
     
-    padding-top: 50px;
+    padding-top: 150px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -131,7 +131,7 @@ header {
 .question {
     padding-left: 10px;
     padding-right: 10px;
-    padding-top: 50px;
+    padding-top: 100px;
     text-align: center;
     flex-wrap: wrap;
 }
