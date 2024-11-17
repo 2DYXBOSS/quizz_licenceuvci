@@ -737,13 +737,6 @@ def sprome() :
     
 
 
-@app.route('/p')
-def p():
-    return render_template('p.html')
-    
-
-
-
 
 def is_translator_request():
     # Liste des identifiants d'agents utilisateur de traducteurs automatiques courants
@@ -910,4 +903,4 @@ def imp():
 
 
 if __name__ == '__main__' :
-    app.run(debug=True,port=5007)
+    app.run(debug=True)

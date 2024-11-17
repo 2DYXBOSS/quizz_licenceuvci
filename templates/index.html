@@ -30,7 +30,6 @@
             </div>
             
         </div>
-        <!-- <h1 id="logo">X - <span id="logo1">QUIZZ</span></h1> -->
         
         
         <div class="isma1">
@@ -84,37 +83,15 @@
         
     </div>
     </div>
-    <!-- autoplay -->
-    <audio id="audio" controls  preload="auto" style="opacity: 0;">
-        <source src="{{ url_for('static', filename='IMAGE/Decomper.m4a')}}" type="audio/mp4">
-    Votre navigateur ne supporte pas l'élément audio.
-    </audio>
-    
 
     <script>
-        // Function to update the displayed time,min,sec
-        //function updateTime() {
-            //var currentDate = new Date();
-            //var formattedTime = currentDate.toLocaleTimeString();
-
-            // Update the content of the HTML element with id "currentTime"
-            //document.getElementById("currentTime").textContent = formattedTime;
-        //}
-        
-
-        // Call updateTime initially and set an interval to update it every second
-        //updateTime();
-        //setInterval(updateTime, 1000);//
-
-        //hautes1("rgb(255, 255, 255)");
-        
+    
         var a = 25
         function updateSeconds() {
             var audio = document.getElementById("audio");
             var currentDate = new Date();
             var currentSeconds = currentDate.getSeconds();
             a=a-1
-            // Mettez à jour le contenu de l'élément HTML avec l'id "currentTime"
             if (a === 14) {
                 audio.play();
             }
@@ -130,7 +107,6 @@
                 
 
             }
-            // Vérifiez si la condition pour la redirection est remplie
             if (a === 0) {
                 window.location.replace("/mentione");
             }
@@ -138,7 +114,6 @@
 
         }
         
-        // Appelez updateSeconds initialement et définissez un intervalle pour mettre à jour chaque seconde
         updateSeconds();
         setInterval(updateSeconds, 1000);
         
