@@ -1,55 +1,73 @@
-
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>quizz</title>  
+    <title>quizz</title>
     <link rel="stylesheet" href="static/CSS/conne.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap" rel="stylesheet">
 </head>
+
 <body>
 
 
-<div class="wweee">
-    <div class="wweee2">
-        <h1 style="font-family: Roboto, -apple-system, BlinkMacSystemFont, Segoe UI, Helvetica Neue, Arial, sans-serif;font-size: 1.2rem;text-align: center;color: black;padding-bottom: 10px;">SE CONNECTER</h1>
-        <p style="text-align: center;padding-bottom: 50px;color: gray;font-size: 0.8rem">Saisir un nom , un mot de passe pour vous connecter a votre compte VRIGOUD .</p>
-        <div class="dex2">
-            
-            <div class="mp" id="vjk">
-             
-                    <form  action="/sprome" method="POST" class="formulaire">
-                
-                
+    <div class="wweee">
+        <div class="wweee2">
+            <div class="loj">
+                <!-- <h1 id="logo">KINSION</h1> -->
+                <img src="{{ url_for('static', filename='IMAGE/logo.png')}}" class="logsh" alt="">
+            </div>
 
-                        
-                       <input required type="text"  name="nom" id="" placeholder="nom">
-                       
-                        <input required type="text" name="password"  id="" placeholder="password">
-                   
-                   
-                        
-                     
-                        
-                        <button type="submit" style="margin-top: 100px;"> <h1 style="font-family: Roboto, -apple-system, BlinkMacSystemFont, Segoe UI, Helvetica Neue, Arial, sans-serif;font-size: 1rem;text-align: center;color: white;">SE CONNECTER</h1></button> 
-                    </form>
+            <!-- <p style="text-align: center;padding-bottom: 50px;color: gray;font-size: 0.8rem">Saisir un nom , un mot de passe pour vous connecter a votre compte VRIGOUD .</p> -->
+            <div class="dexrzt">
+
+                <h1
+                    style="font-family: Roboto, -apple-system, BlinkMacSystemFont, Segoe UI, Helvetica Neue, Arial, sans-serif;font-size: 1rem;text-align: center;color: black;padding-bottom: 10px;">
+                    CONNECTE TOI POUR CONTINUER</h1>
+                <div class="dex2">
+
+                    <div class="mp" id="vjk">
+
+                        <form action="/sprome" method="POST" class="formulaire">
+
+
+
+
+                            <input required type="text" name="nom" id="" placeholder="Entre ton nom stp">
+
+                            <input required type="text" name="password" id="" placeholder="Entre ton mot de passe stp">
+
+
+
+
+
+                            <button type="submit" style="margin-top: 10px;">
+                                <h1
+                                    style="font-family: Roboto, -apple-system, BlinkMacSystemFont, Segoe UI, Helvetica Neue, Arial, sans-serif;font-size: 1rem;text-align: center;color: white;">
+                                    SE CONNECTER</h1>
+                            </button>
+                        </form>
+                    </div>
+                </div>
+                <h1
+                     style="padding-bottom: 10px;padding-top: 100px;color: gray;font-size: 0.8rem ;text-align: center; ">
+                    Creer un compte</h1>
+
+                <a href="/add_data"
+                    style="padding-bottom: 50px; font-family: Roboto, -apple-system, BlinkMacSystemFont, Segoe UI, Helvetica Neue, Arial, sans-serif;font-size: 1rem;text-align: center;color: black;">Cliquer ici pour créer
+                    un compte .</a>
+            </div>
+            <div class="reskd" >
+                <img src="{{ url_for('static', filename='IMAGE/bas.png')}}" width="100%" alt="">
             </div>
         </div>
-        <h1 style="font-family: Roboto, -apple-system, BlinkMacSystemFont, Segoe UI, Helvetica Neue, Arial, sans-serif;font-size: 1rem;text-align: center;color: black;padding-bottom: 10px;padding-top: 100px;">CREER UN COMPTE MAINTENANT </h1>
-
-        <a href="/add_data" style="text-align: center;padding-bottom: 50px;color: gray;font-size: 0.8rem">Cliquer ici pour créer un compte .</a>
-
     </div>
-</div>
 
 
 
 </body>
+
 </html>
-
-
-
-

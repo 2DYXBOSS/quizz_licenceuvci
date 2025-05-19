@@ -6,11 +6,11 @@
 }
 
 body {
-    background-color: #05054e;
+    background-color: white;
 }
 .clase {
     width: 100%;
-    height: 100px;
+    height: 200px;
    
     color: white;
     display: flex;
@@ -20,7 +20,7 @@ body {
 }
 .fo {
     width: 70%;
-    height: 50px;
+    /* height: 50px; */
     background-color: white;
     margin: 0 auto;
     display: flex;
@@ -80,11 +80,14 @@ button {
     
     }
 }
+@media (min-width:800px) {
+
+}
 
 .dadse {
     width: 50px;
-    box-shadow: 2px 3px 10px 1px rgb(54, 54, 54);
-    border-radius: 100%;
+    box-shadow: 2px 3px 10px 1px rgba(207, 207, 207, 0.421);
+    border-radius: 10px;
     position: fixed;
     background-color: white;
     top: 20px;

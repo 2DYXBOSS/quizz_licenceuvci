@@ -11,6 +11,8 @@
     
     <a href="/admin" style="text-decoration: none;">
         {% if gang>=moi %}
+            <audio src="{{ url_for('static', filename='IMAGE/suucces.mp4')}}" style="display: none;" autoplay ></audio> 
+
     <div class="ec">
         <h1 id="a">FELICITATIONS !!!</h1>
     </div>
@@ -23,15 +25,18 @@
     </div>
     {% endif %}
     {% if gang<moi %}
+    
     <div class="ec1">
         <h1 id="a1">ECHEC !!!</h1>
     </div>
     <div class="loj1">
-        <img src="/static/IMAGE/coix.png" width="300px" alt="">
+        <img src="/static/IMAGE/loddef.avif" width="300px" alt="">
     </div>
     <div class="note1">
         <h1 id="an1">{{gang}}/{{pet}}</h1>
     </div>
+                <audio src="{{ url_for('static', filename='IMAGE/dori.mp4')}}" style="display: none;" autoplay ></audio> 
+
     {% endif %}
     </a>
 </div>

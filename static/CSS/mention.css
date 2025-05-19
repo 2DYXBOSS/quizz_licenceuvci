@@ -7,23 +7,16 @@
 button , a {
     cursor: pointer;
 }
-.aqwxc {
-    width: 100%;
-    max-width: 400px;
-    margin: 0 auto;
-    padding-top: 100px;
-    
-    
-}
+
 
 body {
     width: 100%;
-    background-color: rgb(255, 0, 0);
+    background-color: white;
 }
 #logo {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     font-size: 2rem;
-    color: white;
+    color: #D6614D;
     text-align: center;
     padding-top: 50px;
     text-shadow: 2px 2px 5px rgb(165, 170, 169);
@@ -36,25 +29,37 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    animation: image 2s infinite;
+    /* animation: image 2s infinite; */
 }
 
 
-@keyframes image {
+/* @keyframes image {
     0%{
         transform: rotateX(60deg) ;
     }
-}
+} */
 #butt {
-    padding: 25px 10px;
-    background-color: white;
-    text-align: center;
-    margin: 0 auto;
-    border-radius: 10px;
-    color: rgb(5, 5, 78);
-    text-decoration: none;
-    font-weight: bolder;
-    font-size: 1.2rem;
+    height: 50px;
+
+  
+    padding-left: 20px;
+    padding-right: 20px;
+
+        border: 1px solid black;
+        /* padding: 25px 30px; */
+        /* background-color:black; */
+             background-color: white;
+        text-align: center;
+        margin: 0 auto;
+         border-radius: 5px;
+        color: black;
+        text-decoration: none;
+        font-weight: bolder;
+        font-size: 1rem;
+         display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 20px;
 }
 
 .bu {
@@ -62,5 +67,29 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
+     padding-top: 30px;
 }
 
+
+
+@media (max-width: 700px) {
+    .aqwxc {
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto;
+    padding-top: 10px;
+    
+    
+}
+    
+}
+@media (min-width: 700px) {
+    .aqwxc {
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto;
+    padding-top: 100px;
+    
+    
+}
+}

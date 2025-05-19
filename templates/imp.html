@@ -1,86 +1,242 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="/static/CSS/imp.css">
 </head>
+
 <body>
     <div class="dadse">
-        <a href="/admin"><img src="{{ url_for('static', filename='IMAGE/bacj.png')}}" style="filter: invert(10%) sepia(55%) saturate(3085%) hue-rotate(229deg) brightness(91%) contrast(119%);" alt="" width="20px"></a>
+        <a href="/admin"><img src="{{ url_for('static', filename='IMAGE/bacj.png')}}"
+                style="filter: invert(10%) sepia(55%) saturate(3085%) hue-rotate(229deg) brightness(91%) contrast(119%);"
+                alt="" width="20px"></a>
     </div>
-    <div class="clase" style="color: white;">
-        <a href="#" style="text-decoration: none;color: white;"><h1 id="class" style="text-align: center;">Ma performance pour ce quizz </h1></a>
+    <div class="clase" style="color: black;margin-bottom: 70px;max-width: 1000px;margin: 0 auto;padding-bottom: 0px;">
+        <!-- <a href="#" style="text-decoration: none;color: black;">
+            <h1 id="class" style="text-align: start;height: 0.8rem;">Ma performance </h1>
+        </a> -->
+
+        <img src="{{ url_for('static', filename='IMAGE/perdor.avif')}}" height="180px" alt="">
     </div>
-    {% for i in eude %}
-    <div class="fo">
-        <div class="ques">
-            <a href="#" style="text-decoration: none;color: rgb(5, 5, 78);font-size: 0.8rem;"><h1 id="class" style="text-decoration: none;color: rgb(5, 5, 78);font-size: 1.2rem;text-align: center;">QUESTION {{i.compt}}</h1></a>
-        </div>
-        
+    <div style="display: flex;flex-wrap: wrap;gap: 20px;max-width: 1000px;margin: 0 auto;align-items: center;justify-content: center;overflow-y: scroll;padding-top: 100px">
+
+
+
+
+        {% for i in eude %}
+
+
         {% if i.compt != 20 %}
         {% if i.vai == "faux" %}
-        <div class="tes">
-            <form action="/ans" method="post" >
+        <div style="background-color: transparent;width: 150px;max-height: 250px;position: relative;background-color: transparent;margin-bottom: 50px;">
+            <form action="/ans" method="post">
                 <input type="text" value="{{nom}}" name="quyi" width="0px" style="opacity: 0;">
                 <input type="text" value="{{i.compt}}" name="quypmi" width="0px" style="opacity: 0;">
                 <input type="text" value="{{i.question}}" name="mareponse" width="0px" style="opacity: 0;">
                 <input type="text" value="{{i.reponse}}" name="laquestion" width="0px" style="opacity: 0;">
                 <input type="text" value="{{i.vai}}" name="mention" width="0px" style="opacity: 0;">
-                <button type="submit" style="text-decoration: none;color: white;border: none;" ><h1 id="class" style="text-align: center;">{{i.vai}}</h1></button>
+                <button type="submit"
+                    style="text-decoration: none;color: white;border: none;background-color: transparent;position: absolute;top: 0;left: 0;background-color: transparent;">
+                    <div
+                        style="height: 150px;width: 150px;min-height: 150px;min-width: 150px;background-color: white;border-radius: 10px;border: 1px solid rgba(128, 128, 128, 0.268);display: flex; align-items: center; justify-content: center;flex-direction: column;gap: 10px;">
+                        <div
+                            style="height: 50px;width: 50px;min-height: 50px;min-width: 50px;background-color: red;border-radius: 10px;border: 1px solid gray;display: flex; align-items: center; justify-content: center;">
+                            <h1 style="color: white;">{{i.compt}}</h1>
+
+                        </div>
+                        <h1 style="color: red;">{{i.vai}}</h1>
+                    </div>
+
+                </button>
             </form>
         </div>
-        
-        {% elif i.vai == "vrai" %}
-        <div class="tes2">
-            
 
-            <form action="/ans" method="post" >
+        {% elif i.vai == "vrai" %}
+         <div style="background-color: transparent;width: 150px;max-height: 250px;position: relative;background-color: transparent;margin-bottom: 50px;">
+            <form action="/ans" method="post">
                 <input type="text" value="{{nom}}" name="quyi" width="0px" style="opacity: 0;">
                 <input type="text" value="{{i.compt}}" name="quypmi" width="0px" style="opacity: 0;">
                 <input type="text" value="{{i.question}}" name="mareponse" width="0px" style="opacity: 0;">
                 <input type="text" value="{{i.reponse}}" name="laquestion" width="0px" style="opacity: 0;">
                 <input type="text" value="{{i.vai}}" name="mention" width="0px" style="opacity: 0;">
-                <button type="submit" style="text-decoration: none;color: white;border: none;" ><h1 id="class" style="text-align: center;">{{i.vai}}</h1></button>
+                <button type="submit"
+                    style="text-decoration: none;color: white;border: none;background-color: transparent;position: absolute;top: 0;left: 0;">
+                    <div
+                        style="height: 150px;width: 150px;min-height: 150px;min-width: 150px;background-color: white;border-radius: 10px;border: 1px solid rgba(128, 128, 128, 0.268);display: flex; align-items: center; justify-content: center;flex-direction: column;gap: 10px;">
+                        <div
+                            style="height: 50px;width: 50px;min-height: 50px;min-width: 50px;background-color: green;border-radius: 10px;border: 1px solid gray;display: flex; align-items: center; justify-content: center;">
+                            <h1 style="color: white;">{{i.compt}}</h1>
+
+                        </div>
+                        <h1 style="color: green;">{{i.vai}}</h1>
+                    </div>
+
+                </button>
             </form>
         </div>
         {% endif %}
         {% endif %}
+
+
+
+
+
+
         
+         {% if i.compt == 20 %}
+            {% if i.vai == "faux" %}
+         <div style="background-color: transparent;width: 150px;max-height: 250px;position: relative;background-color: transparent;margin-bottom: 50px;">
+            <form action="/ans" method="post">
+                    <input type="text" value="{{nom}}" name="quyi" width="0px" style="opacity: 0;">
+                    <input type="text" value="-1" name="quypmi" width="0px" style="opacity: 0;">
+                    <input type="text" value="{{i.question}}" name="mareponse" width="0px" style="opacity: 0;">
+                    <input type="text" value="{{i.reponse}}" name="laquestion" width="0px" style="opacity: 0;">
+                    <input type="text" value="{{i.vai}}" name="mention" width="0px" style="opacity: 0;">
+                <button type="submit"
+                    style="text-decoration: none;color: white;border: none;background-color: transparent;position: absolute;top: 0;left: 0;">
+                    <div
+                        style="height: 150px;width: 150px;min-height: 150px;min-width: 150px;background-color: white;border-radius: 10px;border: 1px solid rgba(128, 128, 128, 0.268);display: flex; align-items: center; justify-content: center;flex-direction: column;gap: 10px;">
+                        <div
+                            style="height: 50px;width: 50px;min-height: 50px;min-width: 50px;background-color: red;border-radius: 10px;border: 1px solid gray;display: flex; align-items: center; justify-content: center;">
+                            <h1 style="color: white;">{{i.compt}}</h1>
 
+                        </div>
+                        <h1 style="color: red;">{{i.vai}}</h1>
+                    </div>
 
-        {% if i.compt == 20 %}
-        {% if i.vai == "faux" %}
-        <div class="tes">
-            <form action="/ans" method="post" >
-                <input type="text" value="{{nom}}" name="quyi" width="0px" style="opacity: 0;">
-                <input type="text" value="-1" name="quypmi" width="0px" style="opacity: 0;">
-                <input type="text" value="{{i.question}}" name="mareponse" width="0px" style="opacity: 0;">
-                <input type="text" value="{{i.reponse}}" name="laquestion" width="0px" style="opacity: 0;">
-                <input type="text" value="{{i.vai}}" name="mention" width="0px" style="opacity: 0;">
-                <button type="submit" style="text-decoration: none;color: white;border: none;" ><h1 id="class" style="text-align: center;">{{i.vai}}</h1></button>
+                </button>
             </form>
         </div>
-        
-        {% elif i.vai == "vrai" %}
-        <div class="tes2">
-            
 
-            <form action="/ans" method="post" >
-                <input type="text" value="{{nom}}" name="quyi" width="0px" style="opacity: 0;">
-                <input type="text" value="-1" name="quypmi" width="0px" style="opacity: 0;">
-                <input type="text" value="{{i.question}}" name="mareponse" width="0px" style="opacity: 0;">
-                <input type="text" value="{{i.reponse}}" name="laquestion" width="0px" style="opacity: 0;">
-                <input type="text" value="{{i.vai}}" name="mention" width="0px" style="opacity: 0;">
-                <button type="submit" style="text-decoration: none;color: white;border: none;" ><h1 id="class" style="text-align: center;">{{i.vai}}</h1></button>
+       {% elif i.vai == "vrai" %}
+         <div style="background-color: transparent;width: 150px;max-height: 250px;position: relative;background-color: transparent;margin-bottom: 50px;">
+             <input type="text" value="{{nom}}" name="quyi" width="0px" style="opacity: 0;">
+                    <input type="text" value="-1" name="quypmi" width="0px" style="opacity: 0;">
+                    <input type="text" value="{{i.question}}" name="mareponse" width="0px" style="opacity: 0;">
+                    <input type="text" value="{{i.reponse}}" name="laquestion" width="0px" style="opacity: 0;">
+                    <input type="text" value="{{i.vai}}" name="mention" width="0px" style="opacity: 0;">
+                <button type="submit"
+                    style="text-decoration: none;color: white;border: none;background-color: transparent;position: absolute;top: 0;left: 0;">
+                    <div
+                        style="height: 150px;width: 150px;min-height: 150px;min-width: 150px;background-color: white;border-radius: 10px;border: 1px solid rgba(128, 128, 128, 0.268);display: flex; align-items: center; justify-content: center;flex-direction: column;gap: 10px;">
+                        <div
+                            style="height: 50px;width: 50px;min-height: 50px;min-width: 50px;background-color: green;border-radius: 10px;border: 1px solid gray;display: flex; align-items: center; justify-content: center;">
+                            <h1 style="color: white;">{{i.compt}}</h1>
+
+                        </div>
+                        <h1 style="color: green;">{{i.vai}}</h1>
+                    </div>
+
+                </button>
             </form>
         </div>
         {% endif %}
         {% endif %}
-       
 
-    </div>
-    {% endfor %}
+
+
+
+        {% endfor %}
+
+
+        <!-- <div
+            style="height: 150px;width: 150px;min-height: 150px;min-width: 150px;background-color: white;border-radius: 10px;border: 1px solid rgba(128, 128, 128, 0.268);;display: flex; align-items: center; justify-content: center;flex-direction: column;gap: 10px;">
+            <div
+                style="height: 50px;width: 50px;min-height: 50px;min-width: 50px;background-color: green;border-radius: 10px;border: 1px solid gray;display: flex; align-items: center; justify-content: center;">
+                <h1 style="color: white;">3</h1>
+
+            </div>
+
+            <h1 style="color: green;">VRAI</h1>
+        </div> -->
+
+
+
+
+        <!-- {% for i in eude %}
+        <div class="fo">
+            <div class="ques">
+                <a href="#" style="text-decoration: none;color: rgb(5, 5, 78);font-size: 0.8rem;">
+                    <h1 id="class"
+                        style="text-decoration: none;color: rgb(5, 5, 78);font-size: 1.2rem;text-align: center;">
+                        QUESTION {{i.compt}}</h1>
+                </a>
+            </div>
+
+            {% if i.compt != 20 %}
+            {% if i.vai == "faux" %}
+            <div class="tes">
+                <form action="/ans" method="post">
+                    <input type="text" value="{{nom}}" name="quyi" width="0px" style="opacity: 0;">
+                    <input type="text" value="{{i.compt}}" name="quypmi" width="0px" style="opacity: 0;">
+                    <input type="text" value="{{i.question}}" name="mareponse" width="0px" style="opacity: 0;">
+                    <input type="text" value="{{i.reponse}}" name="laquestion" width="0px" style="opacity: 0;">
+                    <input type="text" value="{{i.vai}}" name="mention" width="0px" style="opacity: 0;">
+                    <button type="submit" style="text-decoration: none;color: white;border: none;">
+                        <h1 id="class" style="text-align: center;">{{i.vai}}</h1>
+                    </button>
+                </form>
+            </div>
+
+            {% elif i.vai == "vrai" %}
+            <div class="tes2">
+
+
+                <form action="/ans" method="post">
+                    <input type="text" value="{{nom}}" name="quyi" width="0px" style="opacity: 0;">
+                    <input type="text" value="{{i.compt}}" name="quypmi" width="0px" style="opacity: 0;">
+                    <input type="text" value="{{i.question}}" name="mareponse" width="0px" style="opacity: 0;">
+                    <input type="text" value="{{i.reponse}}" name="laquestion" width="0px" style="opacity: 0;">
+                    <input type="text" value="{{i.vai}}" name="mention" width="0px" style="opacity: 0;">
+                    <button type="submit" style="text-decoration: none;color: white;border: none;">
+                        <h1 id="class" style="text-align: center;">{{i.vai}}</h1>
+                    </button>
+                </form>
+            </div>
+            {% endif %}
+            {% endif %}
+
+
+
+            {% if i.compt == 20 %}
+            {% if i.vai == "faux" %}
+            <div class="tes">
+                <form action="/ans" method="post">
+                    <input type="text" value="{{nom}}" name="quyi" width="0px" style="opacity: 0;">
+                    <input type="text" value="-1" name="quypmi" width="0px" style="opacity: 0;">
+                    <input type="text" value="{{i.question}}" name="mareponse" width="0px" style="opacity: 0;">
+                    <input type="text" value="{{i.reponse}}" name="laquestion" width="0px" style="opacity: 0;">
+                    <input type="text" value="{{i.vai}}" name="mention" width="0px" style="opacity: 0;">
+                    <button type="submit" style="text-decoration: none;color: white;border: none;">
+                        <h1 id="class" style="text-align: center;">{{i.vai}}</h1>
+                    </button>
+                </form>
+            </div>
+
+            {% elif i.vai == "vrai" %}
+            <div class="tes2">
+
+
+                <form action="/ans" method="post">
+                    <input type="text" value="{{nom}}" name="quyi" width="0px" style="opacity: 0;">
+                    <input type="text" value="-1" name="quypmi" width="0px" style="opacity: 0;">
+                    <input type="text" value="{{i.question}}" name="mareponse" width="0px" style="opacity: 0;">
+                    <input type="text" value="{{i.reponse}}" name="laquestion" width="0px" style="opacity: 0;">
+                    <input type="text" value="{{i.vai}}" name="mention" width="0px" style="opacity: 0;">
+                    <button type="submit" style="text-decoration: none;color: white;border: none;">
+                        <h1 id="class" style="text-align: center;">{{i.vai}}</h1>
+                    </button>
+                </form>
+            </div>
+            {% endif %}
+            {% endif %}
+
+
+        </div>
+        {% endfor %} -->
 </body>
+
 </html>

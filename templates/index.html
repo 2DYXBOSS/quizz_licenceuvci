@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,14 +10,19 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap" rel="stylesheet">
 </head>
-<body>
-    <div class="aqwxc">
 
-    
-    <header>
-        <div class="hautes">
-            <div class="hautes1" id="hpou">
-                <h1 id="hde" style="color: rgb(255, 0, 0);
+<body>
+     <div class="aqwxcsdd">
+
+    </div>
+    <div class="aqwxcsss">
+   <div class="aqwxc">
+
+
+        <header>
+            <div class="hautes">
+                <div class="hautes1" id="hpou">
+                    <h1 id="hde" style="color: rgb(255, 0, 0);
             font-weight: bolder;
             
             font-size: 2rem;
@@ -26,44 +32,43 @@
             font-size: 4rem;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;" id="currentTime" datetime=""></time></h1>
 
-                
-            </div>
-            
-        </div>
-        
-        
-        <div class="isma1">
-            <div class="ism1">
-                <p style="color: white;">{{plop}}</p>
-            </div>
-            <p  id="pnom">Questions </p>
-        </div>
-        <div class="isma">
-            <a href="/" id="lo">
-                <img src="{{ url_for('static', filename='IMAGE/ine.png')}}" width="70px" alt="">
-            </a>
-        </div>
-        <div class="isma2">
-            {% if cd>=plop/2 %}
-            <div class="ism12">
-                <p style="color: white;">{{cd}}</p>
-            </div>
-            {% endif%}
-            {% if cd<plop/2 %}
-            <div class="ism13">
-                <p style="color: white;">{{cd}}</p>
-            </div>
-            {% endif%}
-            
-            <p  id="pnom">Trouvés </p>
-        </div>
-        
-       
 
-        
+                </div>
+
+            </div>
+
+            <audio src="{{ url_for('static', filename='IMAGE/aud.mp4')}}" style="display: none;" id="audio"></audio>
+            <div class="isma1" >
+                <div class="ism1">
+                    <p style="color: white;">{{plop}}</p>
+                </div>
+                <p id="pnom">Questions </p>
+            </div>
+            <div class="isma">
+                <a href="/" id="lo">
+                    <img src="{{ url_for('static', filename='IMAGE/ine.png')}}" style="filter: invert(37%) sepia(74%) saturate(4930%) hue-rotate(137deg) brightness(94%) contrast(101%);" width="70px" alt="">
+                </a>
+            </div>
+            <div class="isma2">
+                {% if cd>=plop/2 %}
+                <div class="ism12">
+                    <p style="color: white;">{{cd}}</p>
+                </div>
+                {% endif%}
+                {% if cd<plop /2 %} <div class="ism13">
+                    <p style="color: white;">{{cd}}</p>
+            </div>
+            {% endif%}
+
+            <p id="pnom">Trouvés </p>
+    </div>
+
+
+
+
     </header>
-  
-    <div class="question">
+
+    <div class="question" style="background-color: white;">
         {% if gang[0] %}
         <p id="quizz">{{gang[0]}}</p>
         {% endif%}
@@ -71,7 +76,7 @@
     </div>
     <div class="qui">
         {% for ponse in gang[1] %}
-        <form action="/pons" method="post" id="aqf" >
+        <form action="/pons" method="post" id="aqf">
             <input type="text" value="{{loop.index}}" name="qui" width="0px" style="opacity: 0;visibility: hidden;">
             <input type="text" value="{{loop.index}}" name="inde" width="0px" style="opacity: 0;visibility: hidden;">
             <button type="submit" class="qui1">
@@ -79,44 +84,47 @@
             </button>
         </form>
         {% endfor%}
-        
-        
+
+
     </div>
     </div>
 
+    </div>
+ 
     <script>
-    
+
         var a = 25
         function updateSeconds() {
             var audio = document.getElementById("audio");
             var currentDate = new Date();
             var currentSeconds = currentDate.getSeconds();
-            a=a-1
-            if (a === 14) {
+            a = a - 1
+            if (a === 15) {
                 audio.play();
             }
-            if (a < 11 && a > 0 ) {
+            if (a < 11 && a > -1) {
                 document.getElementById("currentTime").textContent = a;
-                
+
                 var blue = "white";
                 var bluep = "2px 3px 10px 1px gray";
-                
+
 
                 document.getElementById("hpou").style.backgroundColor = blue;
                 document.getElementById("hpou").style.boxShadow = bluep;
-                
+
 
             }
-            if (a === 0) {
+            if (a === -1) {
                 window.location.replace("/mentione");
             }
 
 
         }
-        
+
         updateSeconds();
         setInterval(updateSeconds, 1000);
-        
+
     </script>
 </body>
+
 </html>

@@ -9,17 +9,47 @@ button , a {
 }
 .aqwxc {
     width: 100%;
-    max-width: 500px;
+    
     margin: 0 auto;
-    height: 100VH;
+    height: 100vh;
+    position: relative;
+    display: flex;  
+    background: url('../IMAGE/ggdhd.jpg') no-repeat center center/cover;
+    opacity: 0.2;
+    align-items: center;
+    justify-content: center;
+
 
    
     
 }
+.aqwxcsss{
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    top: 0;
+
+     display: flex;
+
+    align-items: center;
+    justify-content: center;
+}
+.aqwxcs{
+    height: 100%;
+    width: 100%;
+    max-width: 500px;
+    
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+}
 
     body {
         width: 100%;
-        background-color: rgb(5, 5, 78);
+        background-color: white;
     }
     #logo {
         font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -36,15 +66,7 @@ button , a {
         padding-top: 20px;
         color: rgb(173, 173, 173);
     }
-    .lo {
-        height: 300px;
-        background-color: rgb(5, 5, 78);
-        width: 100%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        animation: image 2s infinite;
-    }
+   
     
     
     
@@ -54,22 +76,137 @@ button , a {
         }
     
     }
-    #butt {
-        padding: 25px 30px;
-        background-color: white;
-        text-align: center;
-        margin: 0 auto;
-        border-radius: 10px;
-        color: rgb(5, 5, 78);
-        text-decoration: none;
-        font-weight: bolder;
-        font-size: 1.2rem;
-    }
-    
-    .bu {
+  
+
+
+
+
+    @media (min-width: 700px) {
+        /* .basre{
+            height: 10vh;
+            width: 100%;
+
+        } */
+       .loj{
+
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            height: 20vh;
+
+       }
+
+        .loj .logsh{
+            height: 100%;
+       }
+
+        .lo {
+        height: 60vh;
+
         width: 100%;
         display: flex;
         align-items: center;
         justify-content: center;
+        animation: image 2s infinite;
     }
 
+
+      #butt {
+        height: 50px;
+
+  
+    padding-left: 20px;
+    padding-right: 20px;
+
+        border: 1px solid black;
+        /* padding: 25px 30px; */
+        /* background-color:black; */
+             background-color: white;
+        text-align: center;
+        margin: 0 auto;
+         border-radius: 5px;
+        color: black;
+        text-decoration: none;
+        font-weight: bolder;
+        font-size: 1.2rem;
+         display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 20px;
+    }
+    
+    .bu {
+        width: 100%;
+        height: 20vh;
+
+        display: flex;
+        align-items: start;
+        justify-content: center;
+    }
+    }
+
+    @media (max-width: 700px) {
+         /* .basre{
+            height: 10vh;
+            width: 100%;
+
+            display: flex;
+            justify-content: center;
+        } */
+        .loj{
+
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            height: 20vh;
+
+       }
+
+        .loj .logsh{
+            height: 100%;
+       }
+
+        .lo {
+        height: 400px;
+
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        animation: image 2s infinite;
+    }
+
+
+      #butt {
+        height: 50px;
+
+  
+    padding-left: 20px;
+    padding-right: 20px;
+
+        border: 1px solid black;
+        /* padding: 25px 30px; */
+        /* background-color:black; */
+        background-color: white;
+        text-align: center;
+        margin: 0 auto;
+         border-radius: 5px;
+        color: black;
+        text-decoration: none;
+        font-weight: bolder;
+        font-size: 0.8rem;
+         display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 20px;
+    }
+    
+    .bu {
+        width: 100%;
+        height: 20vh;
+
+        display: flex;
+        align-items: start;
+        justify-content: center;
+    }
+    }

@@ -1,7 +1,6 @@
-
-
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,90 +10,164 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap" rel="stylesheet">
 </head>
+
 <body>
     <div class="aqwxc">
-        
 
 
-            {% if maxe[0]>= 10 %}
-        <div class="clase" style="color: white;">
-            <a href="/fin" style="text-decoration: none;color: white;"><h1 id="class" style="text-align: center;">Félicitations à toi !!!<span style="text-transform: uppercase;font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">{{maxe[1]}}</span> </h1></a>
+
+        {% if maxe[0]>= 10 %}
+        <div class="clase" style="color: black;">
+            <a href="/fin" style="text-decoration: none;color: black;">
+                <h1 id="class" style="text-align: center;">Félicitations à toi !!!<span
+                        style="text-transform: uppercase;font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">{{maxe[1]}}</span>
+                </h1>
+            </a>
+            {% if maxe %}
+            <div class="lopm">
+                <div class="lo1">
+                    <div class="lo14">
+                        <h1 id="1">{{qsw}}.</h1>
+                        <div style="height: 40px;width: 40px">
+                            <img src="{{ url_for('static', filename='IMAGE/avavtd.png')}}" width="100%" height="100%"
+                                alt="">
+                        </div>
+                    </div>
+                    <div class="lo12">
+                        <p
+                            style="text-transform: uppercase;font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;color: black;text-transform: lowercase;">
+                            {{maxe[1]}}</p>
+                    </div>
+
+
+                    {% if maxe[0]>= 10 %}
+                    <div class="lo10">
+                        <p id="lo11">{{maxe[0]}}/20</p>
+                    </div>
+                    {% else %}
+                    <div class="lo100">
+                        <p id="lo11">{{maxe[0]}}/20</p>
+                    </div>
+                    {% endif %}
+                </div>
+
+            </div>
+            {% endif %}
+
+            <div class="lo">
+                <img src="{{ url_for('static', filename='IMAGE/scc.png')}}" width="100%" height="100%" alt="">
+            </div>
         </div>
         {% else %}
-        <div class="clase" style="color: white;">
-            <a href="/fin" style="text-decoration: none;color: white;"><h1 id="class" style="text-align: center;">Ehhh YAKO !!! <span style="text-transform: uppercase;font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">{{maxe[1]}}</span> </h1></a>
-        </div>
-        {% endif %}
-        
-        {% if maxe %}
-        <div class="lopm">
-            <div class="lo1">
-                <div class="lo105">
-                    <h1 id="lo11">{{qsw}}</h1>
-                </div>
-                <div class="lo12">
-                    <h2 style="text-transform: uppercase;font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;color: #030d66;;font-weight: bolder;">{{maxe[1]}}</h2>
-                </div>
-                
-                
-                {% if maxe[0]>= 10 %}
+        <div class="clase" style="color: black;">
+            <a href="/fin" style="text-decoration: none;color: black;">
+                <h1 id="class" style="text-align: center;">Tu n'as pas valider le quizz </h1>
+            </a>
+            {% if maxe %}
+            <div class="lopm">
+                <div class="lo1">
+                    <div class="lo14">
+                        <h1 id="1">{{qsw}}.</h1>
+                        <div style="height: 40px;width: 40px">
+                            <img src="{{ url_for('static', filename='IMAGE/avavtd.png')}}" width="100%" height="100%"
+                                alt="">
+                        </div>
+                    </div>
+                    <div class="lo12">
+                        <p
+                            style="text-transform: uppercase;font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;color: black;text-transform: lowercase;">
+                            {{maxe[1]}}</p>
+                    </div>
+
+
+                    {% if maxe[0]>= 10 %}
                     <div class="lo10">
-                        <h1 id="lo11">{{maxe[0]}}/20</h1>
+                        <p id="lo11">{{maxe[0]}}/20</p>
                     </div>
-                {% else %}
+                    {% else %}
                     <div class="lo100">
-                        <h1 id="lo11">{{maxe[0]}}/20</h1>
+                        <p id="lo11">{{maxe[0]}}/20</p>
                     </div>
-                {% endif %}
+                    {% endif %}
+                </div>
+
             </div>
-        
+            {% endif %}
+            <div class="lo">
+                <img id="image" src="{{ url_for('static', filename='IMAGE/losd.avif')}}" width="100%" height="100%"
+                    alt="">
+            </div>
         </div>
         {% endif %}
-       
+
+
+
+
         <section>
-            <div class="clase5" style="color: white;">
-                <a href="/fin" style="text-decoration: none;color: white;"><h1 id="class" style="text-align: center;">Classement </h1></a>
+            <div class="clase5" style="color: black;">
+                <a href="/fin" style="text-decoration: none;color: black;">
+                    <h1 id="class" style="text-align: start;">Classement </h1>
+                </a>
             </div>
             {% for i in tab %}
             <div class="lo">
                 <div class="lo1">
                     <div class="lo14">
-                        <h1 id="1">{{ loop.index }}</h1>
+                        <h1 id="1">{{ loop.index }}.</h1>
+                        <div style="height: 40px;width: 40px;min-width: 40px;">
+                            <img src="{{ url_for('static', filename='IMAGE/avavtd.png')}}" width="100%" height="100%"
+                                alt="">
+                        </div>
                     </div>
-                    
+
                     <div class="lo12">
-                        <p style="text-transform: uppercase;font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;color: #030d66;;font-weight: bolder;">{{ i[1] }}</p>
+                        <p
+                            style="text-transform: uppercase;font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;color: black;text-transform: lowercase!important;">
+                            {{ i[1] }}</p>
                     </div>
-                    
+
                     {% if i[0] >= 10 %}
-                        <div class="lo10">
-                            <h1 id="lo11">{{ i[0] }}/20</h1>
-                        </div>
+                    <div class="lo10">
+                        <p id="lo11">{{ i[0] }}/20</p>
+                    </div>
                     {% else %}
-                        <div class="lo100">
-                            <h1 id="lo11">{{ i[0] }}/20</h1>
-                        </div>
+                    <div class="lo100">
+                        <p id="lo11">{{ i[0] }}/20</p>
+                    </div>
                     {% endif %}
                 </div>
             </div>
             {% endfor %}
-            
-           
-            <div class="deco" style="padding-left: 30px;padding-right: 30px;padding-top: 20PX;">
-                <div class="de1" style="width: 100%;">
-                    <form action="imp" method="post" style="width: 100%;">
+
+
+            <div class="deco" style="padding-left: 10px;padding-right: 10px;padding-top: 20px;">
+                <div style="width: 50%;height: 100%;display: flex;justify-content: center;align-items: center;padding: 0;">
+                    <form action="imp" method="post" style="width: 100%;height:100%;display: flex;justify-content: center;align-items: center;flex-direction: column;margin: 0;">
                         <input type="text" value="{{maxe[1]}}" name="quyi" width="0px" style="opacity: 0;">
-    
-                        <button type="submit" id="dec" style="width: 100%;"><img style="filter: invert(10%) sepia(55%) saturate(3085%) hue-rotate(229deg) brightness(91%) contrast(119%);" src="{{ url_for('static', filename='IMAGE/Pefom.png')}}" alt="" width="15px">JE VEUX VOIR MES PERFORMATIONS</button>
+
+                        <button type="submit" style="width: 100%;padding-top: 10px;padding-bottom: 10px;padding-left: 20px;padding-right: 20px;border: none;background-color: #FF735C;color: white;">
+                            Voir mes reponses</button>
                     </form>
                 </div>
-                <div class="de1">
-                    <a href="/deconnexion" id="dec"><img style="filter: invert(10%) sepia(55%) saturate(3085%) hue-rotate(229deg) brightness(91%) contrast(119%);" src="{{ url_for('static', filename='IMAGE/hom.png')}}" alt="" width="15px"> JE VAIS RECOMMENCER LE QUIZZ MAINTENANT   !!!</a>
+                <div style="width: 50%;height: 100%;display: flex;justify-content: center;align-items: center;padding-top:23px;">
+                    <button style="width: 100%;padding-top: 10px;padding-bottom: 10px;padding-left: 20px;padding-right: 20px;background-color: #246C4A;border-radius: 3px;border: none;">
+<a href="/deconnexion" style="padding: 0;height: 100%;width: 100%;text-decoration: none;color: white;">
+                        <!-- <img
+                            style="filter: invert(10%) sepia(55%) saturate(3085%) hue-rotate(229deg) brightness(91%) contrast(119%);"
+                            src="{{ url_for('static', filename='IMAGE/hom.png')}}" alt="" width="15px"> -->
+                     
+                            Recommencer 
+                    </a>
+                    </button>
+                    
+
                 </div>
-                
-                
+
+
             </div>
+            
         </section>
     </div>
 </body>
+
 </html>
